@@ -2,7 +2,6 @@ import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Dashboard extends StatefulWidget {
   @override

@@ -1,7 +1,6 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Fun extends StatefulWidget {
   @override
@@ -26,7 +25,7 @@ class _FunState extends State<Fun> {
             Text(
               "Fun",
               style: t.heading,
-            )
+            ),
           ],
         ),
       ),

@@ -18,7 +18,7 @@ class ThemeHelper {
     color: Color(0xffe8ecff),
     fontSize: 22,
     fontWeight: FontWeight.w400,
-    letterSpacing: 2,
+    letterSpacing: 1,
   );
 
   TextStyle smallTextColor = GoogleFonts.montserrat(
