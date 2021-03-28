@@ -21,6 +21,13 @@ class ThemeHelper {
     letterSpacing: 1,
   );
 
+  TextStyle date = GoogleFonts.montserrat(
+    color: Color(0xffe8ecff),
+    fontSize: 18,
+    fontWeight: FontWeight.w300,
+    letterSpacing: 1,
+  );
+
   TextStyle smallTextColor = GoogleFonts.montserrat(
     fontSize: 16,
     fontWeight: FontWeight.w300,
