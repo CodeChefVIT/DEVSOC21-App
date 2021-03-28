@@ -27,27 +27,17 @@ class _DashboardState extends State<Dashboard> {
             ),
             Text(
               "Home",
-              style: GoogleFonts.montserrat(
-                color: t.white,
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 2,
-              ),
+              style: t.heading,
             ),
             SizedBox(
               height: s.hHelper(2),
             ),
             Text(
               "Announcements",
-              style: GoogleFonts.montserrat(
-                color: t.white,
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 2,
-              ),
+              style: t.subheading,
             ),
             SizedBox(
-              height: s.hHelper(1),
+              height: s.hHelper(2),
             ),
             Container(
               height: s.hHelper(15),
@@ -65,27 +55,18 @@ class _DashboardState extends State<Dashboard> {
                   child: Center(
                     child: Text(
                       'No Announcements yet!',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w300,
-                        color: t.activeColor,
-                      ),
+                      style: t.smallTextColor,
                     ),
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: s.hHelper(2),
+              height: s.hHelper(3),
             ),
             Text(
               "Timeline",
-              style: GoogleFonts.montserrat(
-                color: t.white,
-                fontSize: 22,
-                fontWeight: FontWeight.w400,
-                letterSpacing: 2,
-              ),
+              style: t.subheading,
             ),
             SizedBox(
               height: s.hHelper(1),

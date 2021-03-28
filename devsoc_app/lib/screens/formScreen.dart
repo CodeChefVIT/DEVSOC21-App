@@ -25,12 +25,7 @@ class _FormsState extends State<Forms> {
             ),
             Text(
               "Forms",
-              style: GoogleFonts.montserrat(
-                color: t.white,
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 2,
-              ),
+              style: t.heading,
             )
           ],
         ),
