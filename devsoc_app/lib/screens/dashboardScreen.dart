@@ -3,12 +3,12 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Fun extends StatefulWidget {
+class Dashboard extends StatefulWidget {
   @override
-  _FunState createState() => _FunState();
+  _DashboardState createState() => _DashboardState();
 }
 
-class _FunState extends State<Fun> {
+class _DashboardState extends State<Dashboard> {
   ThemeHelper t = ThemeHelper();
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _FunState extends State<Fun> {
               height: s.hHelper(8),
             ),
             Text(
-              "Fun",
+              "Home",
               style: GoogleFonts.montserrat(
                 color: t.white,
                 fontSize: 32,

@@ -11,6 +11,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      themeMode: ThemeMode.dark,
+      darkTheme: ThemeData(
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+      ),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       getPages: [

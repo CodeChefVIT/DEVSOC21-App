@@ -1,8 +1,9 @@
-import 'package:devsoc_app/screens/doashboardScreen.dart';
+import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/screens/dashboardScreen.dart';
 import 'package:devsoc_app/screens/formScreen.dart';
 import 'package:devsoc_app/screens/funScreen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -19,59 +20,48 @@ class _LandingScreenState extends State<LandingScreen> {
     Dashboard(),
     Forms(),
   ];
-
+  ThemeHelper t = ThemeHelper();
   int currentIndex;
   _LandingScreenState({@required this.currentIndex});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.users,
-                color: currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
-              ),
-              title: Text(
-                'Meetings',
-                style: TextStyle(
-                  color: currentIndex == 0 ? Color(0xFF459AFF) : Colors.grey,
-                ),
-              ),
+      backgroundColor: t.bgColor,
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: t.bgColor,
+        elevation: 0,
+        selectedItemColor: t.activeColor,
+        unselectedItemColor: t.inactiveColor,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.game_controller,
             ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.tasks,
-                color: currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
-              ),
-              title: Text(
-                'Projects',
-                style: TextStyle(
-                  color: currentIndex == 1 ? Color(0xFFFF6745) : Colors.grey,
-                ),
-              ),
+            label: "Fun",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.home,
             ),
-            BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.moneyBillWave,
-                color: currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
-              ),
-              title: Text(
-                'Expenses',
-                style: TextStyle(
-                  color: currentIndex == 2 ? Color(0xFF459AFF) : Colors.grey,
-                ),
-              ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.doc_plaintext,
             ),
-          ],
-        ),
-        body: tabs[currentIndex]);
+            label: "Forms",
+          ),
+        ],
+      ),
+      body: tabs[currentIndex],
+    );
   }
 }

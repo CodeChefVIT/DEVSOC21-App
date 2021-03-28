@@ -1,4 +1,7 @@
+import 'package:devsoc_app/helpers/size.dart';
+import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Forms extends StatefulWidget {
   @override
@@ -6,8 +9,32 @@ class Forms extends StatefulWidget {
 }
 
 class _FormsState extends State<Forms> {
+  ThemeHelper t = ThemeHelper();
   @override
   Widget build(BuildContext context) {
-    return Container();
+    SizeHelper s = SizeHelper(context);
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: s.wHelper(6),
+        ),
+        child: Column(
+          children: [
+            SizedBox(
+              height: s.hHelper(8),
+            ),
+            Text(
+              "Forms",
+              style: GoogleFonts.montserrat(
+                color: t.white,
+                fontSize: 32,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 2,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
