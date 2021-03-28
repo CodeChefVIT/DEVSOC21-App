@@ -67,6 +67,16 @@ class _DashboardState extends State<Dashboard> {
                   height: s.hHelper(1),
                 ),
                 TimeLine(),
+                SizedBox(
+                  height: s.hHelper(3),
+                ),
+                Text(
+                  "Links",
+                  style: t.subheading,
+                ),
+                SizedBox(
+                  height: s.hHelper(2),
+                ),
               ],
             ),
           ),
