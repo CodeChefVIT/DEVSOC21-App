@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts: ^2.0.0
+  dotted_border: ^1.0.7
   get: ^3.26.0
 
 dev_dependencies:
