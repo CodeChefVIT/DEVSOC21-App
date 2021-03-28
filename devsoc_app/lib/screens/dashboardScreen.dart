@@ -1,6 +1,8 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/widgets/linkCard.dart';
 import 'package:devsoc_app/widgets/timeline.dart';
+import 'package:devsoc_app/constants/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
@@ -76,6 +78,35 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 SizedBox(
                   height: s.hHelper(2),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LinkCard(
+                      title: "Discord",
+                      imgPath: discord,
+                      bgColor: Color(0xff7289DA),
+                    ),
+                    Spacer(),
+                    LinkCard(
+                      title: "Website",
+                      imgPath: cc,
+                      bgColor: Color(0xff000000),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: s.hHelper(2),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    LinkCard(
+                      title: "YouTube",
+                      imgPath: youtube,
+                      bgColor: Color(0xffFF0000),
+                    ),
+                  ],
                 ),
               ],
             ),

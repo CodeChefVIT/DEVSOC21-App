@@ -51,9 +51,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/discord.svg
-    - assets/yt.svg
-    - assets/cc.svg
+    - assets/svg/discord.svg
+    - assets/svg/yt.svg
+    - assets/svg/cc.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
