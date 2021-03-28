@@ -2,6 +2,7 @@ import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:timelines/timelines.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -70,6 +71,31 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(
               height: s.hHelper(1),
             ),
+            TimelineTile(
+              nodeAlign: TimelineNodeAlign.basic,
+              oppositeContents: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  '6:00 PM',
+                  style: t.smallText,
+                ),
+              ),
+              contents: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Hack Begins',
+                  style: t.smallText,
+                ),
+              ),
+              node: TimelineNode(
+                indicator: DotIndicator(
+                  color: t.activeColor,
+                ),
+                endConnector: SolidLineConnector(
+                  color: t.activeColor,
+                ),
+              ),
+            )
           ],
         ),
       ),

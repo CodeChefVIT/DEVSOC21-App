@@ -26,4 +26,10 @@ class ThemeHelper {
     fontWeight: FontWeight.w300,
     color: Color(0xff3b78ff),
   );
+
+  TextStyle smallText = GoogleFonts.montserrat(
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+    color: Color(0xffe8ecff),
+  );
 }
