@@ -1,3 +1,4 @@
+import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/dashboardScreen.dart';
 import 'package:devsoc_app/screens/formScreen.dart';
@@ -11,15 +12,12 @@ class LandingScreen extends StatefulWidget {
 }
 
 class _LandingScreenState extends State<LandingScreen> {
-  void initState() {
-    super.initState();
-  }
-
   final tabs = [
     Fun(),
     Dashboard(),
     Forms(),
   ];
+
   ThemeHelper t = ThemeHelper();
   int currentIndex;
   _LandingScreenState({@required this.currentIndex});

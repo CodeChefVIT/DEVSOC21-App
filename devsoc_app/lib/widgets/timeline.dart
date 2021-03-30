@@ -15,6 +15,7 @@ class _TimeLineState extends State<TimeLine> {
   final TimelineChecker tl = TimelineChecker();
   void initState() {
     tl.checkTime();
+    print("hello");
     super.initState();
   }
 
@@ -48,8 +49,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[1].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -73,11 +78,19 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[1].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[2].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -101,8 +114,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[2].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -133,8 +150,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[4].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -158,11 +179,19 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[4].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[5].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -186,11 +215,19 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[6].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[5].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -214,8 +251,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[6].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -246,8 +287,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[8].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -271,11 +316,19 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[8].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
-            endConnector: SolidLineConnector(
-              color: t.activeColor,
+            endConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[9].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),
@@ -299,8 +352,12 @@ class _TimeLineState extends State<TimeLine> {
                 );
               },
             ),
-            startConnector: SolidLineConnector(
-              color: t.activeColor,
+            startConnector: Obx(
+              () {
+                return SolidLineConnector(
+                  color: tl.timelineBool[9].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
           ),
         ),

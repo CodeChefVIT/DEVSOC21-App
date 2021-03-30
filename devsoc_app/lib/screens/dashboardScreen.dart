@@ -1,3 +1,4 @@
+import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/linkCard.dart';
@@ -5,6 +6,7 @@ import 'package:devsoc_app/widgets/timeline.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:timelines/timelines.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -13,6 +15,13 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   ThemeHelper t = ThemeHelper();
+  TimelineChecker tl = TimelineChecker();
+  void initState() {
+    tl.checkTime();
+    print("hhlo");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
