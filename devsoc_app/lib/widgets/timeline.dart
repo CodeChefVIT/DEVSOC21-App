@@ -1,10 +1,23 @@
+import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:timelines/timelines.dart';
 
-class TimeLine extends StatelessWidget {
+class TimeLine extends StatefulWidget {
+  @override
+  _TimeLineState createState() => _TimeLineState();
+}
+
+class _TimeLineState extends State<TimeLine> {
   final ThemeHelper t = ThemeHelper();
+  final TimelineChecker tl = TimelineChecker();
+  void initState() {
+    tl.checkTime();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -28,8 +41,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[0].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             endConnector: SolidLineConnector(
               color: t.activeColor,
@@ -49,8 +66,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[1].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
@@ -73,8 +94,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[2].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
@@ -101,8 +126,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[3].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             endConnector: SolidLineConnector(
               color: t.activeColor,
@@ -122,8 +151,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[4].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
@@ -146,8 +179,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[5].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             endConnector: SolidLineConnector(
               color: t.activeColor,
@@ -170,8 +207,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[6].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
@@ -198,8 +239,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[7].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             endConnector: SolidLineConnector(
               color: t.activeColor,
@@ -219,8 +264,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[8].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
@@ -243,8 +292,12 @@ class TimeLine extends StatelessWidget {
             ),
           ),
           node: TimelineNode(
-            indicator: DotIndicator(
-              color: t.activeColor,
+            indicator: Obx(
+              () {
+                return DotIndicator(
+                  color: tl.timelineBool[9].value ? t.doneColor : t.activeColor,
+                );
+              },
             ),
             startConnector: SolidLineConnector(
               color: t.activeColor,
