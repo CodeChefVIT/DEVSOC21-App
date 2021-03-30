@@ -31,6 +31,7 @@ dependencies:
   google_fonts: ^2.0.0
   timelines: ^0.1.0
   dotted_border: ^1.0.7
+  url_launcher: ^6.0.3
   flutter_svg: ^0.19.3
   get: ^3.26.0
 
@@ -54,6 +55,7 @@ flutter:
     - assets/svg/discord.svg
     - assets/svg/yt.svg
     - assets/svg/cc.svg
+    - assets/svg/github.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

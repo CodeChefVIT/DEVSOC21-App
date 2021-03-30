@@ -1,12 +1,12 @@
-import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/linkCard.dart';
 import 'package:devsoc_app/widgets/timeline.dart';
 import 'package:devsoc_app/constants/svg.dart';
+import 'package:devsoc_app/constants/links.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:timelines/timelines.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -15,12 +15,6 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   ThemeHelper t = ThemeHelper();
-  TimelineChecker tl = TimelineChecker();
-  void initState() {
-    tl.checkTime();
-    print("hhlo");
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,16 +85,26 @@ class _DashboardState extends State<Dashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LinkCard(
-                      title: "Discord",
-                      imgPath: discord,
-                      bgColor: Color(0xff7289DA),
+                    GestureDetector(
+                      child: LinkCard(
+                        title: "Discord",
+                        imgPath: discord,
+                        bgColor: Color(0xff7289DA),
+                      ),
+                      onTap: () {
+                        _launchUrl(discordLink);
+                      },
                     ),
                     Spacer(),
-                    LinkCard(
-                      title: "Website",
-                      imgPath: cc,
-                      bgColor: Color(0xff000000),
+                    GestureDetector(
+                      child: LinkCard(
+                        title: "Website",
+                        imgPath: cc,
+                        bgColor: Color(0xff000000),
+                      ),
+                      onTap: () {
+                        _launchUrl(websiteLink);
+                      },
                     ),
                   ],
                 ),
@@ -110,12 +114,31 @@ class _DashboardState extends State<Dashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LinkCard(
-                      title: "YouTube",
-                      imgPath: youtube,
-                      bgColor: Color(0xffFF0000),
+                    GestureDetector(
+                      child: LinkCard(
+                        title: "GitHub",
+                        imgPath: github,
+                        bgColor: Color(0xff000000),
+                      ),
+                      onTap: () {
+                        _launchUrl(githubLink);
+                      },
+                    ),
+                    Spacer(),
+                    GestureDetector(
+                      child: LinkCard(
+                        title: "YouTube",
+                        imgPath: youtube,
+                        bgColor: Color(0xffFF0000),
+                      ),
+                      onTap: () {
+                        _launchUrl(youtubeLink);
+                      },
                     ),
                   ],
+                ),
+                SizedBox(
+                  height: s.hHelper(2),
                 ),
               ],
             ),
@@ -142,3 +165,6 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 }
+
+void _launchUrl(String url) async =>
+    await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';

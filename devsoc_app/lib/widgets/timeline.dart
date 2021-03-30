@@ -15,7 +15,6 @@ class _TimeLineState extends State<TimeLine> {
   final TimelineChecker tl = TimelineChecker();
   void initState() {
     tl.checkTime();
-    print("hello");
     super.initState();
   }
 
