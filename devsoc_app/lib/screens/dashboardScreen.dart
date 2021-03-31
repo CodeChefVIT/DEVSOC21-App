@@ -28,31 +28,18 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: s.wHelper(6),
+    return SmartRefresher(
+      enablePullDown: true,
+      header: BezierHeader(
+        bezierColor: t.activeColor,
+        rectHeight: 40,
       ),
-      child: SmartRefresher(
-        enablePullDown: true,
-        header: CustomHeader(
-          builder: (BuildContext context, _) {
-            return Container(
-              margin: EdgeInsets.only(
-                top: s.hHelper(15),
-              ),
-              width: 30,
-              child: Center(
-                child: CircularProgressIndicator(
-                  valueColor: new AlwaysStoppedAnimation<Color>(
-                    t.activeColor,
-                  ),
-                ),
-              ),
-            );
-          },
+      controller: _refreshController,
+      onRefresh: _onRefresh,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: s.wHelper(6),
         ),
-        controller: _refreshController,
-        onRefresh: _onRefresh,
         child: Stack(
           children: [
             SingleChildScrollView(
