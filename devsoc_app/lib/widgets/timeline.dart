@@ -64,7 +64,7 @@ class _TimeLineState extends State<TimeLine> {
             child: Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                '\n8:30 PM\nFool Stack Hours',
+                '\n8:30 PM\nSponsorship Hours',
                 style: t.smallText,
               ),
             ),
@@ -100,7 +100,7 @@ class _TimeLineState extends State<TimeLine> {
             child: Container(
               alignment: Alignment.bottomLeft,
               child: Text(
-                '\n11:30 PM\nTalk by Mr Jugal Bhatt',
+                '\n11:30 PM\nTalk by Mr Akshat Gupta',
                 style: t.smallText,
               ),
             ),

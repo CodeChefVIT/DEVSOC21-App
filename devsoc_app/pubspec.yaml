@@ -33,6 +33,7 @@ dependencies:
   dotted_border: ^1.0.7
   url_launcher: ^6.0.3
   flutter_svg: ^0.19.3
+  pull_to_refresh: ^1.6.4
   get: ^3.26.0
 
 dev_dependencies:
