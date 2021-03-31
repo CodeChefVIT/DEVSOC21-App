@@ -5,6 +5,7 @@ import 'package:devsoc_app/widgets/linkCard.dart';
 import 'package:devsoc_app/widgets/timeline.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/constants/links.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -28,21 +29,24 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
-    return SmartRefresher(
-      enablePullDown: true,
-      header: BezierHeader(
-        bezierColor: t.activeColor,
-        rectHeight: 40,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: s.wHelper(6),
       ),
-      controller: _refreshController,
-      onRefresh: _onRefresh,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: s.wHelper(6),
-        ),
-        child: Stack(
-          children: [
-            SingleChildScrollView(
+      child: Stack(
+        children: [
+          SmartRefresher(
+            enablePullDown: true,
+            header: CustomHeader(
+              builder: (BuildContext context, _) {
+                return Center(
+                  child: CupertinoActivityIndicator(),
+                );
+              },
+            ),
+            controller: _refreshController,
+            onRefresh: _onRefresh,
+            child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -160,25 +164,25 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            Container(
-              color: t.bgColor,
-              width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: s.hHelper(8),
-                  ),
-                  Text(
-                    "Home",
-                    style: t.heading,
-                  ),
-                ],
-              ),
+          ),
+          Container(
+            color: t.bgColor,
+            width: double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: s.hHelper(8),
+                ),
+                Text(
+                  "Home",
+                  style: t.heading,
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
