@@ -7,6 +7,8 @@
   		<string>https</string>
   		<string>http</string>
 	</array>
+	<key>io.flutter.embedded_views_preview</key>
+	<string>YES</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
