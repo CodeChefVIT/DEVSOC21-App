@@ -23,7 +23,7 @@ class _FunState extends State<Fun> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: s.hHelper(15),
+                height: s.hHelper(14),
               ),
               Container(
                 decoration: BoxDecoration(
