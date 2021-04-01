@@ -5,7 +5,7 @@ class ThemeHelper {
   // Color bgColor = Color(0xff00133d);
   Color bgColor = Color(0xff000000);
   // Color activeColor = Color(0xff3b78ff);
-  Color activeColor = Color(0xff512eff);
+  Color activeColor = Color(0xff7954ff);
   Color inactiveColor = Color(0xff636363);
   Color white = Color(0xffe8ecff);
   Color doneColor = Color(0xff02f0bc);
@@ -34,7 +34,7 @@ class ThemeHelper {
   TextStyle smallTextColor = GoogleFonts.montserrat(
     fontSize: 16,
     fontWeight: FontWeight.w300,
-    color: Color(0xff512eff),
+    color: Color(0xff7954ff),
     // color: Color(0xff3b78ff),
   );
 
@@ -44,3 +44,5 @@ class ThemeHelper {
     color: Color(0xffe8ecff),
   );
 }
+
+//512eff
