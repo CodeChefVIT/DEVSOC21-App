@@ -44,5 +44,3 @@ class ThemeHelper {
     color: Color(0xffe8ecff),
   );
 }
-
-//512eff
