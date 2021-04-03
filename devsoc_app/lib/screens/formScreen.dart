@@ -8,6 +8,7 @@ class Forms extends StatefulWidget {
 }
 
 class _FormsState extends State<Forms> {
+  ThemeHelper t = new ThemeHelper();
   Map<String, dynamic> form = {
     "title": "Pizza Form",
     "questions": [
@@ -24,7 +25,7 @@ class _FormsState extends State<Forms> {
       {
         "question": "T Shirt Size",
         "type": "dropdown",
-        "dropdownOptions": [
+        "dropdownOptions": <String>[
           "S",
           "M",
           "L",
@@ -45,7 +46,7 @@ class _FormsState extends State<Forms> {
       },
     ],
   };
-  ThemeHelper t = ThemeHelper();
+
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -55,13 +56,138 @@ class _FormsState extends State<Forms> {
       ),
       child: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: s.hHelper(14),
-              ),
-            ],
+          SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: s.hHelper(14),
+                ),
+                Text(
+                  form["title"],
+                  style: t.subheading,
+                ),
+                SizedBox(
+                  height: s.hHelper(2),
+                ),
+                for (var question in form["questions"])
+                  question["type"] == "textfield"
+                      ? Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(bottom: s.hHelper(2)),
+                          child: TextFormField(
+                            style: t.smallTextColor,
+                            cursorColor: t.activeColor,
+                            onChanged: (value) {
+                              question["value"] = value;
+                            },
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: s.wHelper(5)),
+                              border: OutlineInputBorder(
+                                gapPadding: 1,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(12),
+                                ),
+                                borderSide: BorderSide(
+                                  color: t.activeColor,
+                                  width: 1,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                gapPadding: 1,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: t.activeColor,
+                                  width: 1,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                gapPadding: 1,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: t.activeColor,
+                                  width: 1,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                gapPadding: 1,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: t.activeColor,
+                                  width: 1,
+                                ),
+                              ),
+                              disabledBorder: OutlineInputBorder(
+                                gapPadding: 1,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12)),
+                                borderSide: BorderSide(
+                                  color: t.activeColor,
+                                  width: 1,
+                                ),
+                              ),
+                              hintText: question["question"],
+                              hintStyle: t.smallTextColor,
+                            ),
+                          ),
+                        )
+                      : question["type"] == "dropdown"
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  question["question"],
+                                  style: t.smallText,
+                                ),
+                                SizedBox(
+                                  height: s.hHelper(1),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: t.activeColor),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: s.wHelper(5)),
+                                  alignment: Alignment.centerLeft,
+                                  margin: EdgeInsets.only(bottom: s.hHelper(2)),
+                                  child: DropdownButton(
+                                    items: question["dropdownOptions"]
+                                        .map<DropdownMenuItem>((value) {
+                                      return new DropdownMenuItem(
+                                        value: value,
+                                        child: Container(
+                                          width: s.wHelper(70),
+                                          color: t.bgColor,
+                                          child: new Text(
+                                            value,
+                                            style: t.smallTextColor,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        question["value"] = value;
+                                      });
+                                    },
+                                    underline: Container(),
+                                    value: question["value"] ??
+                                        question["dropdownOptions"][0],
+                                  ),
+                                ),
+                              ],
+                            )
+                          : question["type"] == "checkbox"
+                              ? Container()
+                              : Container(),
+              ],
+            ),
           ),
           Container(
             color: t.bgColor,
