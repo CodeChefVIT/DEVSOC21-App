@@ -183,7 +183,18 @@ class _FormsState extends State<Forms> {
                               ],
                             )
                           : question["type"] == "checkbox"
-                              ? Container()
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      question["question"],
+                                      style: t.smallText,
+                                    ),
+                                    SizedBox(
+                                      height: s.hHelper(1),
+                                    ),
+                                  ],
+                                )
                               : Container(),
               ],
             ),
