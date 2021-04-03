@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: ThemeData(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
+        canvasColor: Color(0xff00133d),
       ),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,

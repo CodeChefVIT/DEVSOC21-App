@@ -163,7 +163,6 @@ class _FormsState extends State<Forms> {
                                         value: value,
                                         child: Container(
                                           width: s.wHelper(70),
-                                          color: t.bgColor,
                                           child: new Text(
                                             value,
                                             style: t.smallTextColor,
