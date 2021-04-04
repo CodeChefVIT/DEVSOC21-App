@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ThemeHelper {
-  // Color bgColor = Color(0xff00133d);
   Color bgColor = Color(0xff000000);
-  // Color activeColor = Color(0xff3b78ff);
-  Color activeColor = Color(0xff7954ff);
+  Color activeColor = Color(0xff147ffd);
   Color inactiveColor = Color(0xff636363);
   Color white = Color(0xffe8ecff);
   Color doneColor = Color(0xff02f0bc);
@@ -34,8 +32,7 @@ class ThemeHelper {
   TextStyle smallTextColor = GoogleFonts.montserrat(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: Color(0xff7954ff),
-    // color: Color(0xff3b78ff),
+    color: Color(0xff147ffd),
   );
 
   TextStyle smallText = GoogleFonts.montserrat(

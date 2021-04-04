@@ -18,7 +18,8 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   ThemeHelper t = ThemeHelper();
-  RefreshController _refreshController = RefreshController(initialRefresh: false);
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
   final TimelineChecker tl = TimelineChecker();
 
   void _onRefresh() async {
@@ -92,7 +93,8 @@ class _DashboardState extends State<Dashboard> {
                   SizedBox(
                     height: s.hHelper(1),
                   ),
-                  TimeLine(),
+                  // TimeLine(),
+
                   SizedBox(
                     height: s.hHelper(3),
                   ),
