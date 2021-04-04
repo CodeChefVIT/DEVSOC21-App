@@ -1,5 +1,6 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/widgets/eventCard.dart';
 import 'package:flutter/material.dart';
 
 class TimelineBackground extends StatelessWidget {
@@ -497,20 +498,9 @@ class TimelineBackground extends StatelessWidget {
             ),
           ],
         ),
-        Column(
-          children: [
-            SizedBox(
-              height: s.hHelper(14),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                  left: s.wHelper(18),
-                  top: ((s.hHelper(4) + 20) * 10) + s.hHelper(1.4)),
-              height: (s.hHelper(4) + 20) * 3,
-              color: Colors.red,
-            ),
-          ],
-        ),
+        EventCard(duration: 2, time: 7),
+        EventCard(duration: 1, time: 10),
+        EventCard(duration: 3, time: 16),
       ],
     );
   }
