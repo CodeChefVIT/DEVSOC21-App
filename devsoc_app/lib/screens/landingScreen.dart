@@ -2,17 +2,19 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/dashboardScreen.dart';
 import 'package:devsoc_app/screens/formScreen.dart';
 import 'package:devsoc_app/screens/funScreen.dart';
+import 'package:devsoc_app/screens/timelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
-  _LandingScreenState createState() => _LandingScreenState(currentIndex: 1);
+  _LandingScreenState createState() => _LandingScreenState(currentIndex: 2);
 }
 
 class _LandingScreenState extends State<LandingScreen> {
   final tabs = [
     Fun(),
+    Timeline(),
     Dashboard(),
     Forms(),
   ];
@@ -43,6 +45,12 @@ class _LandingScreenState extends State<LandingScreen> {
               CupertinoIcons.game_controller,
             ),
             label: "Fun",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.time,
+            ),
+            label: "Timeline",
           ),
           BottomNavigationBarItem(
             icon: Icon(
