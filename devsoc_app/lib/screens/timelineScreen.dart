@@ -14,9 +14,6 @@ class _TimelineState extends State<Timeline> {
   TimelineChecker tl = TimelineChecker();
   void initState() {
     tl.checkTimeOne();
-    for (int i = 0; i < tl.timelineCurrent.length; i++) {
-      print(tl.percentNodeOne[i].value);
-    }
     super.initState();
   }
 

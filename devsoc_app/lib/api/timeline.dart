@@ -20,9 +20,9 @@ class TimelineChecker extends GetxController {
     "day1": [
       {
         "start": "2021-04-05 01:00:00",
-        "end": "2021-04-05 03:00:00",
+        "end": "2021-04-05 04:00:00",
         "startVal": 1,
-        "duration": 2,
+        "duration": 3,
       },
       {
         "start": "2021-04-05 05:00:00",
