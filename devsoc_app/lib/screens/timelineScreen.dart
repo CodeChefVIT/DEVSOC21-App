@@ -9,6 +9,30 @@ class Timeline extends StatefulWidget {
 
 class _TimelineState extends State<Timeline> {
   ThemeHelper t = ThemeHelper();
+
+  void initState() {
+    DateTime now = DateTime.now();
+    // print(((now.difference(one).inSeconds) /
+    //         (one.difference(two).inSeconds) *
+    //         100)
+    //     .abs());
+    calcPerc(now);
+    super.initState();
+  }
+
+  void calcPerc(DateTime now) {
+    if (now.compareTo(one) == -1) {
+      print(((0) / (one.difference(two).inSeconds) * 100).abs());
+    } else {
+      print(((now.difference(one).inSeconds) /
+              (one.difference(two).inSeconds) *
+              100)
+          .abs());
+    }
+  }
+
+  DateTime one = DateTime.parse("2021-04-04 23:00:00");
+  DateTime two = DateTime.parse("2021-04-04 24:10:00");
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
