@@ -1,5 +1,6 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/widgets/timelineBg.dart';
 import 'package:flutter/material.dart';
 
 class Timeline extends StatefulWidget {
@@ -42,13 +43,8 @@ class _TimelineState extends State<Timeline> {
       ),
       child: Stack(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: s.hHelper(14),
-              ),
-            ],
+          SingleChildScrollView(
+            child: TimelineBackground(),
           ),
           Container(
             color: t.bgColor,
