@@ -2,7 +2,6 @@ import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/linkCard.dart';
-import 'package:devsoc_app/widgets/timeline.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/constants/links.dart';
 import 'package:flutter/cupertino.dart';
