@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ThemeHelper {
   Color bgColor = Color(0xff000000);
+  Color secondaryBgColor = Color(0xff0026e3);
   Color activeColor = Color(0xff147ffd);
   Color inactiveColor = Color(0xff636363);
   Color white = Color(0xffe8ecff);

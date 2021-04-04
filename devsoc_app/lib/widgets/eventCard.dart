@@ -20,7 +20,7 @@ class EventCard extends StatelessWidget {
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
-              color: t.activeColor,
+              color: t.secondaryBgColor,
             ),
             margin: EdgeInsets.only(
               left: s.wHelper(18),
@@ -33,7 +33,7 @@ class EventCard extends StatelessWidget {
               borderRadius: BorderRadius.all(
                 Radius.circular(10),
               ),
-              color: Colors.red,
+              color: t.activeColor,
             ),
             margin: EdgeInsets.only(
               left: s.wHelper(18),

@@ -15,32 +15,63 @@ class TimelineChecker extends GetxController {
     DateTime.parse("2021-03-31 14:30:00").toLocal(),
   ];
 
-  List<Map<String, dynamic>> timelineOne = [
-    {
-      "start": "2021-04-05 01:00:00",
-      "end": "2021-04-05 03:00:00",
-      "startVal": 1,
-      "duration": 2,
-    },
-    {
-      "start": "2021-04-05 05:00:00",
-      "end": "2021-04-05 06:00:00",
-      "startVal": 5,
-      "duration": 1,
-    },
-    {
-      "start": "2021-04-05 10:00:00",
-      "end": "2021-04-05 12:00:00",
-      "startVal": 10,
-      "duration": 2,
-    },
-    {
-      "start": "2021-04-05 14:00:00",
-      "end": "2021-04-05 15:30:00",
-      "startVal": 14,
-      "duration": 1.5,
-    },
-  ];
+  Map<String, dynamic> timeline = {
+    "today": 1,
+    "day1": [
+      {
+        "start": "2021-04-05 01:00:00",
+        "end": "2021-04-05 03:00:00",
+        "startVal": 1,
+        "duration": 2,
+      },
+      {
+        "start": "2021-04-05 05:00:00",
+        "end": "2021-04-05 06:00:00",
+        "startVal": 5,
+        "duration": 1,
+      },
+      {
+        "start": "2021-04-05 10:00:00",
+        "end": "2021-04-05 12:00:00",
+        "startVal": 10,
+        "duration": 2,
+      },
+      {
+        "start": "2021-04-05 14:00:00",
+        "end": "2021-04-05 15:30:00",
+        "startVal": 14,
+        "duration": 1.5,
+      },
+    ],
+    "day2": [
+      {
+        "start": "2021-04-06 01:00:00",
+        "end": "2021-04-06 03:00:00",
+        "startVal": 1,
+        "duration": 2,
+      },
+      {
+        "start": "2021-04-06 05:00:00",
+        "end": "2021-04-06 06:00:00",
+        "startVal": 5,
+        "duration": 1,
+      },
+      {
+        "start": "2021-04-06 10:00:00",
+        "end": "2021-04-06 12:00:00",
+        "startVal": 10,
+        "duration": 2,
+      },
+      {
+        "start": "2021-04-06 14:00:00",
+        "end": "2021-04-06 15:30:00",
+        "startVal": 14,
+        "duration": 1.5,
+      },
+    ],
+  };
+
+  List<Map<String, dynamic>> timelineCurrent = [];
 
   void calcPerc(DateTime now, DateTime one, DateTime two) {
     if (now.compareTo(one) == -1) {
@@ -73,7 +104,12 @@ class TimelineChecker extends GetxController {
 
   void checkTimeOne() {
     DateTime now = DateTime.now();
-    for (var i in timelineOne) {
+    if (timeline["today"] == 1) {
+      timelineCurrent = timeline["day1"];
+    } else if (timeline["today"] == 2) {
+      timelineCurrent = timeline["day2"];
+    }
+    for (var i in timelineCurrent) {
       calcPerc(now, DateTime.parse(i["start"]), DateTime.parse(i["end"]));
     }
   }
