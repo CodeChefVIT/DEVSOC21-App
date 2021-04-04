@@ -1,3 +1,4 @@
+import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/eventCard.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 
 class TimelineBackground extends StatelessWidget {
   final ThemeHelper t = ThemeHelper();
+  final TimelineChecker tl;
+  TimelineBackground(this.tl);
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -498,9 +501,12 @@ class TimelineBackground extends StatelessWidget {
             ),
           ],
         ),
-        EventCard(duration: 0.5, time: 7.5),
-        EventCard(duration: 1, time: 10),
-        EventCard(duration: 3, time: 16),
+        for (int i = 0; i < tl.timelineOne.length; i++)
+          EventCard(
+            duration: tl.timelineOne[i]["duration"].toDouble(),
+            time: tl.timelineOne[i]["startVal"].toDouble(),
+            percent: tl.percentNodeOne[i].value,
+          ),
       ],
     );
   }

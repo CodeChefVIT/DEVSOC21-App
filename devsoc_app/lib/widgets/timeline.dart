@@ -14,7 +14,7 @@ class _TimeLineState extends State<TimeLine> {
   final ThemeHelper t = ThemeHelper();
   final TimelineChecker tl = TimelineChecker();
   void initState() {
-    tl.checkTime();
+    tl.checkTimeOne();
     super.initState();
   }
 

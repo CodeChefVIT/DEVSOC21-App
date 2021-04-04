@@ -23,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
   final TimelineChecker tl = TimelineChecker();
 
   void _onRefresh() async {
-    tl.checkTime();
+    tl.checkTimeOne();
     _refreshController.refreshCompleted();
   }
 

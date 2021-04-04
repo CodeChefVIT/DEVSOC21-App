@@ -15,6 +15,49 @@ class TimelineChecker extends GetxController {
     DateTime.parse("2021-03-31 14:30:00").toLocal(),
   ];
 
+  List<Map<String, dynamic>> timelineOne = [
+    {
+      "start": "2021-04-05 01:00:00",
+      "end": "2021-04-05 03:00:00",
+      "startVal": 1,
+      "duration": 2,
+    },
+    {
+      "start": "2021-04-05 05:00:00",
+      "end": "2021-04-05 06:00:00",
+      "startVal": 5,
+      "duration": 1,
+    },
+    {
+      "start": "2021-04-05 10:00:00",
+      "end": "2021-04-05 12:00:00",
+      "startVal": 10,
+      "duration": 2,
+    },
+    {
+      "start": "2021-04-05 14:00:00",
+      "end": "2021-04-05 15:30:00",
+      "startVal": 14,
+      "duration": 1.5,
+    },
+  ];
+
+  void calcPerc(DateTime now, DateTime one, DateTime two) {
+    if (now.compareTo(one) == -1) {
+      percentNodeOne.add(0.0.obs);
+    } else if (now.compareTo(two) == 1) {
+      percentNodeOne.add(100.0.obs);
+    } else {
+      percentNodeOne.add(((now.difference(one).inSeconds) /
+              (one.difference(two).inSeconds) *
+              100)
+          .abs()
+          .obs);
+    }
+  }
+
+  List<RxDouble> percentNodeOne = [];
+
   List<RxBool> timelineBool = [
     false.obs,
     false.obs,
@@ -28,13 +71,10 @@ class TimelineChecker extends GetxController {
     false.obs,
   ];
 
-  void checkTime() {
-    DateTime current = DateTime.now().toLocal();
-    print(current);
-    for (int i = 0; i < timelineNodes.length; i++) {
-      if (current.compareTo(timelineNodes[i]) > 0) {
-        timelineBool[i].value = true;
-      }
+  void checkTimeOne() {
+    DateTime now = DateTime.now();
+    for (var i in timelineOne) {
+      calcPerc(now, DateTime.parse(i["start"]), DateTime.parse(i["end"]));
     }
   }
 }

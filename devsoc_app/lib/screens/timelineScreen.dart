@@ -1,3 +1,4 @@
+import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/timelineBg.dart';
@@ -10,29 +11,15 @@ class Timeline extends StatefulWidget {
 
 class _TimelineState extends State<Timeline> {
   ThemeHelper t = ThemeHelper();
-
+  TimelineChecker tl = TimelineChecker();
   void initState() {
-    DateTime now = DateTime.now();
-
-    calcPerc(now);
+    tl.checkTimeOne();
+    for (int i = 0; i < tl.timelineOne.length; i++) {
+      print(tl.percentNodeOne[i].value);
+    }
     super.initState();
   }
 
-  void calcPerc(DateTime now) {
-    if (now.compareTo(one) == -1) {
-      print(0);
-    } else if (now.compareTo(two) == 1) {
-      print(100);
-    } else {
-      print(((now.difference(one).inSeconds) /
-              (one.difference(two).inSeconds) *
-              100)
-          .abs());
-    }
-  }
-
-  DateTime one = DateTime.parse("2021-04-04 23:00:00");
-  DateTime two = DateTime.parse("2021-04-04 24:10:00");
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -43,7 +30,7 @@ class _TimelineState extends State<Timeline> {
       child: Stack(
         children: [
           SingleChildScrollView(
-            child: TimelineBackground(),
+            child: TimelineBackground(tl),
           ),
           Container(
             color: t.bgColor,
