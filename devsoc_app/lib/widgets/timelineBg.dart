@@ -498,7 +498,7 @@ class TimelineBackground extends StatelessWidget {
             ),
           ],
         ),
-        EventCard(duration: 2, time: 7),
+        EventCard(duration: 0.5, time: 7.5),
         EventCard(duration: 1, time: 10),
         EventCard(duration: 3, time: 16),
       ],

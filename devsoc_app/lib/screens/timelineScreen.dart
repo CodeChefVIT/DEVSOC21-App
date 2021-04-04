@@ -13,17 +13,16 @@ class _TimelineState extends State<Timeline> {
 
   void initState() {
     DateTime now = DateTime.now();
-    // print(((now.difference(one).inSeconds) /
-    //         (one.difference(two).inSeconds) *
-    //         100)
-    //     .abs());
+
     calcPerc(now);
     super.initState();
   }
 
   void calcPerc(DateTime now) {
     if (now.compareTo(one) == -1) {
-      print(((0) / (one.difference(two).inSeconds) * 100).abs());
+      print(0);
+    } else if (now.compareTo(two) == 1) {
+      print(100);
     } else {
       print(((now.difference(one).inSeconds) /
               (one.difference(two).inSeconds) *
