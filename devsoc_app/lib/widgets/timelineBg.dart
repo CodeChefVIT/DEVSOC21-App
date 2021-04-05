@@ -506,6 +506,7 @@ class TimelineBackground extends StatelessWidget {
             duration: tl.timelineCurrent[i]["duration"].toDouble(),
             time: tl.timelineCurrent[i]["startVal"].toDouble(),
             percent: tl.percentNodeOne[i].value,
+            title: tl.timelineCurrent[i]["title"],
           ),
       ],
     );

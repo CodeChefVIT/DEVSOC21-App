@@ -6,7 +6,13 @@ class EventCard extends StatelessWidget {
   final double duration;
   final double time;
   final double percent;
-  EventCard({@required this.duration, @required this.time, this.percent});
+  final String title;
+  EventCard({
+    @required this.duration,
+    @required this.time,
+    this.percent,
+    @required this.title,
+  });
   final ThemeHelper t = ThemeHelper();
   @override
   Widget build(BuildContext context) {
@@ -40,6 +46,21 @@ class EventCard extends StatelessWidget {
             ),
             height: (s.hHelper(4) + 20) * duration,
             width: s.wHelper(70) * percent / 100,
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              left: s.wHelper(18),
+            ),
+            height: (s.hHelper(4) + 20) * duration,
+            width: s.wHelper(70),
+            padding: EdgeInsets.symmetric(
+              horizontal: s.wHelper(2),
+              vertical: s.hHelper(1),
+            ),
+            child: Text(
+              title,
+              style: t.smallTextBold,
+            ),
           ),
         ],
       ),

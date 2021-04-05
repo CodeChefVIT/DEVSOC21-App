@@ -2,67 +2,112 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 
 class TimelineChecker extends GetxController {
-  List<DateTime> timelineNodes = [
-    DateTime.parse("2021-03-29 18:00:00").toLocal(),
-    DateTime.parse("2021-03-29 20:30:00").toLocal(),
-    DateTime.parse("2021-03-29 23:30:00").toLocal(),
-    DateTime.parse("2021-03-30 02:00:00").toLocal(),
-    DateTime.parse("2021-03-30 06:30:00").toLocal(),
-    DateTime.parse("2021-03-30 14:30:00").toLocal(),
-    DateTime.parse("2021-03-30 18:30:00").toLocal(),
-    DateTime.parse("2021-03-31 02:00:00").toLocal(),
-    DateTime.parse("2021-03-31 06:30:00").toLocal(),
-    DateTime.parse("2021-03-31 14:30:00").toLocal(),
-  ];
+  // List<DateTime> timelineNodes = [
+  //   DateTime.parse("2021-03-29 18:00:00").toLocal(),
+  //   DateTime.parse("2021-03-29 20:30:00").toLocal(),
+  //   DateTime.parse("2021-03-29 23:30:00").toLocal(),
+  //   DateTime.parse("2021-03-30 02:00:00").toLocal(),
+  //   DateTime.parse("2021-03-30 06:30:00").toLocal(),
+  //   DateTime.parse("2021-03-30 14:30:00").toLocal(),
+  //   DateTime.parse("2021-03-30 18:30:00").toLocal(),
+  //   DateTime.parse("2021-03-31 02:00:00").toLocal(),
+  //   DateTime.parse("2021-03-31 06:30:00").toLocal(),
+  //   DateTime.parse("2021-03-31 14:30:00").toLocal(),
+  // ];
 
   Map<String, dynamic> timeline = {
     "today": 1,
     "day1": [
       {
+        "title": "Talk on Blockchain",
         "start": "2021-04-05 01:00:00",
         "end": "2021-04-05 04:00:00",
         "startVal": 1,
         "duration": 3,
       },
       {
+        "title": "Sad Boy Hours",
         "start": "2021-04-05 05:00:00",
         "end": "2021-04-05 06:00:00",
         "startVal": 5,
         "duration": 1,
       },
       {
+        "title": "Review 1",
         "start": "2021-04-05 10:00:00",
         "end": "2021-04-05 12:00:00",
         "startVal": 10,
         "duration": 2,
       },
       {
+        "title": "CodeChef Hours",
         "start": "2021-04-05 14:00:00",
         "end": "2021-04-05 15:30:00",
         "startVal": 14,
         "duration": 1.5,
       },
+      {
+        "title": "TL T",
+        "start": "2021-04-05 22:00:00",
+        "end": "2021-04-05 23:00:00",
+        "startVal": 22,
+        "duration": 1,
+      },
     ],
     "day2": [
       {
+        "title": "Talk on Blockchain",
         "start": "2021-04-06 01:00:00",
         "end": "2021-04-06 03:00:00",
         "startVal": 1,
         "duration": 2,
       },
       {
+        "title": "Naseeb life",
         "start": "2021-04-06 05:00:00",
         "end": "2021-04-06 06:00:00",
         "startVal": 5,
         "duration": 1,
       },
       {
+        "title": "Fool Stack Meet",
         "start": "2021-04-06 10:00:00",
         "end": "2021-04-06 12:00:00",
         "startVal": 10,
         "duration": 2,
       },
       {
+        "title": "TL T",
+        "start": "2021-04-06 14:00:00",
+        "end": "2021-04-06 15:30:00",
+        "startVal": 14,
+        "duration": 1.5,
+      },
+    ],
+    "day3": [
+      {
+        "title": "Talk on Blockchain",
+        "start": "2021-04-06 01:00:00",
+        "end": "2021-04-06 03:00:00",
+        "startVal": 1,
+        "duration": 2,
+      },
+      {
+        "title": "Naseeb life",
+        "start": "2021-04-06 05:00:00",
+        "end": "2021-04-06 06:00:00",
+        "startVal": 5,
+        "duration": 1,
+      },
+      {
+        "title": "Fool Stack Meet",
+        "start": "2021-04-06 10:00:00",
+        "end": "2021-04-06 12:00:00",
+        "startVal": 10,
+        "duration": 2,
+      },
+      {
+        "title": "TL T",
         "start": "2021-04-06 14:00:00",
         "end": "2021-04-06 15:30:00",
         "startVal": 14,
@@ -89,25 +134,33 @@ class TimelineChecker extends GetxController {
 
   List<RxDouble> percentNodeOne = [];
 
-  List<RxBool> timelineBool = [
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-    false.obs,
-  ];
+  // List<RxBool> timelineBool = [
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  //   false.obs,
+  // ];
+  //
+  RxInt current = 0.obs;
+
+  void checkDay() {
+    current.value = timeline["today"];
+  }
 
   void checkTimeOne() {
     DateTime now = DateTime.now();
-    if (timeline["today"] == 1) {
+    if (current.value == 1) {
       timelineCurrent = timeline["day1"];
-    } else if (timeline["today"] == 2) {
+    } else if (current.value == 2) {
       timelineCurrent = timeline["day2"];
+    } else if (current.value == 3) {
+      timelineCurrent = timeline["day3"];
     }
     for (var i in timelineCurrent) {
       calcPerc(now, DateTime.parse(i["start"]), DateTime.parse(i["end"]));
