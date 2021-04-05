@@ -56,11 +56,11 @@ class TimelineChecker extends GetxController {
     ],
     "day2": [
       {
-        "title": "Talk on Blockchain",
-        "start": "2021-04-06 00:00:00",
+        "title": "Talk on Blockchain by Pranjal",
+        "start": "2021-04-06 01:00:00",
         "end": "2021-04-06 02:00:00",
-        "startVal": 0,
-        "duration": 2,
+        "startVal": 1,
+        "duration": 1,
       },
       {
         "title": "Naseeb life",
@@ -157,13 +157,10 @@ class TimelineChecker extends GetxController {
     DateTime now = DateTime.now();
     percentNodeOne.clear();
     if (current.value == 1) {
-      print("val 1");
       timelineCurrent = timeline["day1"];
     } else if (current.value == 2) {
-      print("val 2");
       timelineCurrent = timeline["day2"];
     } else if (current.value == 3) {
-      print("val 3");
       timelineCurrent = timeline["day3"];
     }
     for (var i in timelineCurrent) {

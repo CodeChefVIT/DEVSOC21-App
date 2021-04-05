@@ -2,8 +2,10 @@ import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/widgets/timelineBg.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class Timeline extends StatefulWidget {
   @override
@@ -13,8 +15,21 @@ class Timeline extends StatefulWidget {
 class _TimelineState extends State<Timeline> {
   ThemeHelper t = ThemeHelper();
   TimelineChecker tl = TimelineChecker();
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+  void _onRefresh() async {
+    tl.checkTimeOne();
+    setState(() {
+      one = true;
+      two = false;
+      three = false;
+    });
+    _refreshController.refreshCompleted();
+  }
+
   void initState() {
     tl.checkDay();
+
     tl.current.value == 1 ? one = true : one = false;
     tl.current.value == 1 ? two = true : two = false;
     tl.current.value == 1 ? three = true : three = false;
@@ -36,14 +51,26 @@ class _TimelineState extends State<Timeline> {
         children: [
           Padding(
             padding: EdgeInsets.only(top: s.hHelper(15)),
-            child: SingleChildScrollView(
-              child: one
-                  ? TimelineBackground(tl)
-                  : two
-                      ? TimelineBackground(tl)
-                      : three
-                          ? TimelineBackground(tl)
-                          : TimelineBackground(tl),
+            child: SmartRefresher(
+              enablePullDown: true,
+              header: CustomHeader(
+                builder: (BuildContext context, _) {
+                  return Center(
+                    child: CupertinoActivityIndicator(),
+                  );
+                },
+              ),
+              controller: _refreshController,
+              onRefresh: _onRefresh,
+              child: SingleChildScrollView(
+                child: one
+                    ? TimelineBackground(tl)
+                    : two
+                        ? TimelineBackground(tl)
+                        : three
+                            ? TimelineBackground(tl)
+                            : TimelineBackground(tl),
+              ),
             ),
           ),
           Container(
