@@ -51,7 +51,7 @@ class ThemeHelper {
   );
 
   TextStyle smallTextBold = GoogleFonts.montserrat(
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w600,
     color: Color(0xffe8ecff),
   );
