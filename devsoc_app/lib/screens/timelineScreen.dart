@@ -15,10 +15,16 @@ class _TimelineState extends State<Timeline> {
   TimelineChecker tl = TimelineChecker();
   void initState() {
     tl.checkDay();
+    tl.current.value == 1 ? one = true : one = false;
+    tl.current.value == 1 ? two = true : two = false;
+    tl.current.value == 1 ? three = true : three = false;
     tl.checkTimeOne();
     super.initState();
   }
 
+  bool one;
+  bool two;
+  bool three;
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -31,7 +37,13 @@ class _TimelineState extends State<Timeline> {
           Padding(
             padding: EdgeInsets.only(top: s.hHelper(15)),
             child: SingleChildScrollView(
-              child: TimelineBackground(tl),
+              child: one
+                  ? TimelineBackground(tl)
+                  : two
+                      ? TimelineBackground(tl)
+                      : three
+                          ? TimelineBackground(tl)
+                          : TimelineBackground(tl),
             ),
           ),
           Container(
@@ -58,6 +70,11 @@ class _TimelineState extends State<Timeline> {
                       onTap: () {
                         tl.current.value = 1;
                         tl.checkTimeOne();
+                        setState(() {
+                          one = true;
+                          two = false;
+                          three = false;
+                        });
                       },
                       child: Obx(
                         () => Container(
@@ -96,6 +113,11 @@ class _TimelineState extends State<Timeline> {
                       onTap: () {
                         tl.current.value = 2;
                         tl.checkTimeOne();
+                        setState(() {
+                          one = false;
+                          two = true;
+                          three = false;
+                        });
                       },
                       child: Obx(
                         () => Container(
@@ -134,6 +156,11 @@ class _TimelineState extends State<Timeline> {
                       onTap: () {
                         tl.current.value = 3;
                         tl.checkTimeOne();
+                        setState(() {
+                          one = false;
+                          two = false;
+                          three = true;
+                        });
                       },
                       child: Obx(
                         () => Container(

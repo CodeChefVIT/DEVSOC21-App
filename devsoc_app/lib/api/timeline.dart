@@ -16,7 +16,7 @@ class TimelineChecker extends GetxController {
   // ];
 
   Map<String, dynamic> timeline = {
-    "today": 1,
+    "today": 2,
     "day1": [
       {
         "title": "Talk on Blockchain",
@@ -57,9 +57,9 @@ class TimelineChecker extends GetxController {
     "day2": [
       {
         "title": "Talk on Blockchain",
-        "start": "2021-04-06 01:00:00",
-        "end": "2021-04-06 03:00:00",
-        "startVal": 1,
+        "start": "2021-04-06 00:00:00",
+        "end": "2021-04-06 02:00:00",
+        "startVal": 0,
         "duration": 2,
       },
       {
@@ -70,7 +70,7 @@ class TimelineChecker extends GetxController {
         "duration": 1,
       },
       {
-        "title": "Fool Stack Meet",
+        "title": "Technical Meet",
         "start": "2021-04-06 10:00:00",
         "end": "2021-04-06 12:00:00",
         "startVal": 10,
@@ -155,11 +155,15 @@ class TimelineChecker extends GetxController {
 
   void checkTimeOne() {
     DateTime now = DateTime.now();
+    percentNodeOne.clear();
     if (current.value == 1) {
+      print("val 1");
       timelineCurrent = timeline["day1"];
     } else if (current.value == 2) {
+      print("val 2");
       timelineCurrent = timeline["day2"];
     } else if (current.value == 3) {
+      print("val 3");
       timelineCurrent = timeline["day3"];
     }
     for (var i in timelineCurrent) {
