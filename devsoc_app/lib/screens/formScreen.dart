@@ -1,5 +1,6 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Forms extends StatefulWidget {
@@ -42,10 +43,40 @@ class _FormsState extends State<Forms> {
           "Backend",
           "Design",
         ],
-        "value": null,
+        "value": [],
       },
     ],
   };
+
+  Map<String, bool> checkBoxMap = {};
+
+  void initState() {
+    for (var questions in form["questions"]) {
+      if (questions["type"] == "checkbox") {
+        for (var i in questions["checkboxOptions"]) {
+          checkBoxMap[i] = false;
+        }
+      }
+      if (questions["type"] == "dropdown") {
+        questions["value"] = questions["dropdownOptions"][0];
+      }
+    }
+    super.initState();
+  }
+
+  void _submit() {
+    FocusScope.of(context).unfocus();
+    for (var questions in form["questions"]) {
+      if (questions["type"] == "checkbox") {
+        for (var i in questions["checkboxOptions"]) {
+          if (checkBoxMap[i] == true) {
+            questions["value"].add(i);
+          }
+        }
+      }
+    }
+    print(form);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -193,9 +224,80 @@ class _FormsState extends State<Forms> {
                                     SizedBox(
                                       height: s.hHelper(1),
                                     ),
+                                    for (var i in question["checkboxOptions"])
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                            color: t.activeColor,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                        ),
+                                        margin: EdgeInsets.symmetric(
+                                          vertical: s.hHelper(0.8),
+                                        ),
+                                        child: CheckboxListTile(
+                                          title: Text(
+                                            i,
+                                            style: t.smallTextColor,
+                                          ),
+
+                                          checkColor: t.altBgColor,
+                                          activeColor: t.activeColor,
+                                          value: checkBoxMap[i],
+                                          onChanged: (newValue) {
+                                            setState(() {
+                                              checkBoxMap[i] = newValue;
+                                              print(checkBoxMap);
+                                            });
+                                          },
+                                          controlAffinity: ListTileControlAffinity
+                                              .leading, //  <-- leading Checkbox
+                                        ),
+                                      )
                                   ],
                                 )
                               : Container(),
+                SizedBox(
+                  height: s.hHelper(2),
+                ),
+                Container(
+                  width: double.infinity,
+                  alignment: Alignment.center,
+                  child: TextButton(
+                    onPressed: () {
+                      _submit();
+                    },
+                    child: Container(
+                      height: s.hHelper(8),
+                      width: s.wHelper(40),
+                      decoration: BoxDecoration(
+                        color: t.activeColor,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            CupertinoIcons.checkmark_alt,
+                            color: t.white,
+                          ),
+                          SizedBox(
+                            width: s.wHelper(2),
+                          ),
+                          Text(
+                            "Submit",
+                            style: t.smallTextBold,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: s.hHelper(2),
+                ),
               ],
             ),
           ),

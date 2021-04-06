@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
         canvasColor: Color(0xff00133d),
+        unselectedWidgetColor: Color(0xff147ffd),
       ),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,

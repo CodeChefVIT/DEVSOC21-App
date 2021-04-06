@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devsoc_app">
-   <application
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
         android:label="devsoc_app"
         android:icon="@mipmap/ic_launcher">
         <activity
