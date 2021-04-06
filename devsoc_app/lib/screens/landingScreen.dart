@@ -2,6 +2,7 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/dashboardScreen.dart';
 import 'package:devsoc_app/screens/formScreen.dart';
 import 'package:devsoc_app/screens/funScreen.dart';
+import 'package:devsoc_app/screens/profileScreen.dart';
 import 'package:devsoc_app/screens/timelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _LandingScreenState extends State<LandingScreen> {
     Timeline(),
     Dashboard(),
     Forms(),
+    Profile(),
   ];
 
   ThemeHelper t = ThemeHelper();
@@ -27,7 +29,7 @@ class _LandingScreenState extends State<LandingScreen> {
     return Scaffold(
       backgroundColor: t.bgColor,
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: t.bgColor,
+        backgroundColor: t.altBgColor,
         elevation: 0,
         selectedItemColor: t.activeColor,
         unselectedItemColor: t.inactiveColor,
@@ -63,6 +65,12 @@ class _LandingScreenState extends State<LandingScreen> {
               CupertinoIcons.doc_plaintext,
             ),
             label: "Forms",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              CupertinoIcons.person,
+            ),
+            label: "Profile",
           ),
         ],
       ),

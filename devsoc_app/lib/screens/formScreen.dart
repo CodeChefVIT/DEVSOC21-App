@@ -242,7 +242,6 @@ class _FormsState extends State<Forms> {
                                             i,
                                             style: t.smallTextColor,
                                           ),
-
                                           checkColor: t.altBgColor,
                                           activeColor: t.activeColor,
                                           value: checkBoxMap[i],
