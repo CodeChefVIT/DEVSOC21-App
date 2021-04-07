@@ -31,14 +31,14 @@ class _FormSubmittedState extends State<FormSubmitted> {
             Icon(
               CupertinoIcons.checkmark_seal_fill,
               color: t.activeColor,
-              size: 32,
+              size: 36,
             ),
             SizedBox(
               height: s.hHelper(2),
             ),
             Text(
               "Form submitted successfully!",
-              style: t.subheadingColor,
+              style: t.smallTextColor,
             ),
           ],
         ),

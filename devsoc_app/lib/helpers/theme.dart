@@ -9,6 +9,7 @@ class ThemeHelper {
   Color inactiveColor = Color(0xff636363);
   Color white = Color(0xffe8ecff);
   Color errorColor = Color(0xffff1f5a);
+  Color acceptColor = Color(0xff1fff8b);
 
   TextStyle heading = GoogleFonts.montserrat(
     color: Color(0xffe8ecff),
