@@ -11,6 +11,20 @@ class ThemeHelper {
   Color errorColor = Color(0xffff1f5a);
   Color acceptColor = Color(0xff1fff8b);
 
+  TextStyle title = GoogleFonts.montserrat(
+    color: Color(0xffe8ecff),
+    fontSize: 36,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 2,
+  );
+
+  TextStyle titleColor = GoogleFonts.montserrat(
+    color: Color(0xff147ffd),
+    fontSize: 36,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 2,
+  );
+
   TextStyle heading = GoogleFonts.montserrat(
     color: Color(0xffe8ecff),
     fontSize: 32,

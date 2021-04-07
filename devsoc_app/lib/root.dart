@@ -1,4 +1,5 @@
 import 'package:devsoc_app/screens/landingScreen.dart';
+import 'package:devsoc_app/screens/loginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
@@ -32,7 +33,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       getPages: [
-        GetPage(name: '/', page: () => LandingScreen()),
+        GetPage(name: '/', page: () => LoginScreen()),
       ],
     );
   }
