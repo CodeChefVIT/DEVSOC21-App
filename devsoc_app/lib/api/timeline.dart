@@ -9,7 +9,8 @@ class TimelineChecker extends GetxController {
   Future<void> getTimeline() async {
     try {
       var response = await Dio().get(timelineRoute);
-      timeline = json.decode(response.toString());
+      Map<dynamic, dynamic> res = json.decode(response.toString());
+      timeline = res["data"];
     } catch (e) {
       print(e);
     }

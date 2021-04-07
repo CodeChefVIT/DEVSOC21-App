@@ -8,7 +8,7 @@ class ThemeHelper {
   Color activeColor = Color(0xff147ffd);
   Color inactiveColor = Color(0xff636363);
   Color white = Color(0xffe8ecff);
-  Color doneColor = Color(0xff02f0bc);
+  Color errorColor = Color(0xffff1f5a);
 
   TextStyle heading = GoogleFonts.montserrat(
     color: Color(0xffe8ecff),

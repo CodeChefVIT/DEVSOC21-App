@@ -26,55 +26,58 @@ class _LandingScreenState extends State<LandingScreen> {
   _LandingScreenState({@required this.currentIndex});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: t.bgColor,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: t.altBgColor,
-        elevation: 0,
-        selectedItemColor: t.activeColor,
-        unselectedItemColor: t.inactiveColor,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.game_controller,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: t.bgColor,
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: t.altBgColor,
+          elevation: 0,
+          selectedItemColor: t.activeColor,
+          unselectedItemColor: t.inactiveColor,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: currentIndex,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.game_controller,
+              ),
+              label: "Fun",
             ),
-            label: "Fun",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.time,
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.time,
+              ),
+              label: "Timeline",
             ),
-            label: "Timeline",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.home,
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.home,
+              ),
+              label: "Home",
             ),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.doc_plaintext,
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.doc_plaintext,
+              ),
+              label: "Forms",
             ),
-            label: "Forms",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              CupertinoIcons.person,
+            BottomNavigationBarItem(
+              icon: Icon(
+                CupertinoIcons.person,
+              ),
+              label: "Profile",
             ),
-            label: "Profile",
-          ),
-        ],
+          ],
+        ),
+        body: tabs[currentIndex],
       ),
-      body: tabs[currentIndex],
     );
   }
 }
