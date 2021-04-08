@@ -1,3 +1,4 @@
+import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
@@ -14,6 +15,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   ThemeHelper t = ThemeHelper();
+  Auth auth = Auth();
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -145,7 +147,8 @@ class _ProfileState extends State<Profile> {
                     ),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {
+                      onTap: () async {
+                        await auth.logout();
                         Get.to(() => LoginScreen());
                       },
                       child: Icon(
