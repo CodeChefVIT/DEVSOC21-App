@@ -1,9 +1,11 @@
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/screens/loginScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -143,7 +145,9 @@ class _ProfileState extends State<Profile> {
                     ),
                     Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => LoginScreen());
+                      },
                       child: Icon(
                         CupertinoIcons.square_arrow_right,
                         color: t.activeColor,

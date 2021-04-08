@@ -6,3 +6,5 @@ String githubLink = "https://github.com/CodeChefVIT";
 String rootURL = "https://devsoc-test.herokuapp.com/";
 
 String timelineRoute = rootURL + "appdata";
+String loginRoute = rootURL + "app/getOTP";
+String otpRoute = rootURL + "app/checkOtp";

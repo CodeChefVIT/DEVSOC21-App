@@ -1,13 +1,64 @@
+import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/screens/otpScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   final ThemeHelper t = ThemeHelper();
   final TextEditingController email = TextEditingController();
+  final Auth a = Auth();
+  _submit(BuildContext context) async {
+    Map<String, String> body = {"email": email.text.toString()};
+    var map = await a.login(body);
+    if (map["success"] == true) {
+      Get.to(() => OTPScreen());
+    } else {
+      await _showMyDialog(context, map["message"]);
+    }
+  }
+
+  Future<void> _showMyDialog(BuildContext context, String message) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: t.altBgColor,
+          title: Text(
+            'Message',
+            style: t.smallTextBold,
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  message,
+                  style: t.smallText,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'Close',
+                style: t.smallTextColor,
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -143,7 +194,9 @@ class LoginScreen extends StatelessWidget {
                       width: double.infinity,
                       alignment: Alignment.center,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _submit(context);
+                        },
                         child: Container(
                           height: s.hHelper(8),
                           width: s.wHelper(40),
