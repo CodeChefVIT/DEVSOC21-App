@@ -11,6 +11,7 @@ import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -28,8 +29,11 @@ class _ProfileState extends State<Profile> {
   Auth auth = Auth();
   void initState() {
     getData();
+    flutterWebviewPlugin.close();
     super.initState();
   }
+
+  final flutterWebviewPlugin = new FlutterWebviewPlugin();
 
   getData() async {
     final prefs = await SharedPreferences.getInstance();
@@ -37,6 +41,21 @@ class _ProfileState extends State<Profile> {
         json.decode(prefs.getString('userData')) as Map<String, Object>;
     token = extractedUserData['token'];
     profileDetails = await profile.getProfile(token);
+  }
+
+  launchWebview() {
+    flutterWebviewPlugin
+        .launch(masti, withLocalStorage: true, withJavascript: true)
+        .whenComplete(() {
+      var opbolte = token.split(" ")[1];
+      print(opbolte);
+      flutterWebviewPlugin.reload();
+      final res = flutterWebviewPlugin.evalJavascript(
+          "(function() { try { window.localStorage.setItem('authToken', $opbolte);window.location.reload() } catch (err) { return err; }  })();");
+      flutterWebviewPlugin.reload();
+      // Wrapped `setItem` into a func that would return some helpful info in case it throws.
+      print("Eval result: $res");
+    });
   }
 
   void _launchURL(String _url) async => await canLaunch(_url)
@@ -92,7 +111,8 @@ class _ProfileState extends State<Profile> {
                         profileDetails["user"]["team"] == null
                             ? TextButton(
                                 onPressed: () {
-                                  launch(devsocLink);
+                                  launchWebview();
+                                  // launch(devsocLink);
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -126,7 +146,8 @@ class _ProfileState extends State<Profile> {
                                     null
                                 ? TextButton(
                                     onPressed: () {
-                                      launch(devsocLink);
+                                      launchWebview();
+                                      // launch(devsocLink);
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(

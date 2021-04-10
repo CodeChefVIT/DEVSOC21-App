@@ -2,6 +2,7 @@ String discordLink = "https://codechefvit.com/discord";
 String youtubeLink = "https://youtube.com/codechefvit";
 String websiteLink = "https://codechefvit.com";
 String devsocLink = "https://hackwith.codechefvit.com";
+String masti = "https://devsoc-test.netlify.app/app/dashboard";
 String githubLink = "https://github.com/CodeChefVIT";
 
 String rootURL = "https://devsoc-test.herokuapp.com/";

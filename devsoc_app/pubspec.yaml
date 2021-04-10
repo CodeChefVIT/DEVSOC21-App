@@ -38,6 +38,7 @@ dependencies:
   http: ^0.13.1
   pin_code_fields: ^7.0.0
   flutter_svg: ^0.19.3
+  flutter_webview_plugin: ^0.3.11
   webview_flutter: ^2.0.2
   pull_to_refresh: ^1.6.4
   get: ^3.26.0
