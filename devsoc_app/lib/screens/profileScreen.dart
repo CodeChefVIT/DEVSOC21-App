@@ -114,23 +114,63 @@ class _ProfileState extends State<Profile> {
                         SizedBox(
                           height: s.hHelper(3),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Idea Accepted",
-                              style: t.smallText,
-                            ),
-                            SizedBox(
-                              width: s.wHelper(2),
-                            ),
-                            Icon(
-                              CupertinoIcons.check_mark,
-                              color: t.acceptColor,
-                              size: 22,
-                            ),
-                          ],
-                        ),
+                        profileDetails["user"]["team"] == null
+                            ? Text(
+                                "Create a team to submit an Idea",
+                                style: t.smallText,
+                              )
+                            : profileDetails["user"]["team"]["submission"] ==
+                                    null
+                                ? TextButton(
+                                    onPressed: () {
+                                      launch(devsocLink);
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: t.activeColor,
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: s.wHelper(5),
+                                        vertical: s.hHelper(1),
+                                      ),
+                                      child: Text(
+                                        "Submit an Idea",
+                                        style: t.smallText,
+                                      ),
+                                    ),
+                                  )
+                                : Column(
+                                    children: [
+                                      Text(
+                                        profileDetails["user"]["team"]
+                                            ["submission"]["name"],
+                                        style: t.smallTextBold,
+                                      ),
+                                      SizedBox(
+                                        height: s.hHelper(0.5),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            profileDetails["user"]["team"]
+                                                ["submission"]["status"],
+                                            style: t.smallText,
+                                          ),
+                                          SizedBox(
+                                            width: s.wHelper(2),
+                                          ),
+                                          Icon(
+                                            CupertinoIcons.check_mark,
+                                            color: t.acceptColor,
+                                            size: 22,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                         SizedBox(
                           height: s.hHelper(3),
                         ),
