@@ -38,7 +38,7 @@ class _FunState extends State<Fun> {
                   height: s.hHelper(60),
                   child: WebView(
                     javascriptMode: JavascriptMode.unrestricted,
-                    initialUrl: 'https://hextris.io',
+                    initialUrl: 'https://devtris.codechefvit.com',
                   ),
                 ),
               ),
