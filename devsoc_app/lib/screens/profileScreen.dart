@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/api/profile.dart';
 import 'package:devsoc_app/constants/links.dart';
@@ -39,6 +39,9 @@ class _ProfileState extends State<Profile> {
     profileDetails = await profile.getProfile(token);
   }
 
+  void _launchURL(String _url) async => await canLaunch(_url)
+      ? await launch(_url)
+      : showMyDialog(context, "Could not launch URL");
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -143,8 +146,9 @@ class _ProfileState extends State<Profile> {
                                 : Column(
                                     children: [
                                       Text(
-                                        profileDetails["user"]["team"]
-                                            ["submission"]["name"],
+                                        "Idea " +
+                                            profileDetails["user"]["team"]
+                                                ["submission"]["name"],
                                         style: t.smallTextBold,
                                       ),
                                       SizedBox(
@@ -198,7 +202,10 @@ class _ProfileState extends State<Profile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                _launchURL(profileDetails["user"]["personal"]
+                                    ["github"]);
+                              },
                               child: SvgPicture.asset(
                                 github,
                                 height: s.hHelper(3),
@@ -209,7 +216,10 @@ class _ProfileState extends State<Profile> {
                               width: s.wHelper(10),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                _launchURL(profileDetails["user"]["personal"]
+                                    ["linkedin"]);
+                              },
                               child: SvgPicture.asset(
                                 linkedin,
                                 height: s.hHelper(3),

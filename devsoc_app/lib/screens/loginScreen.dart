@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:devsoc_app/utils/errorDialog.dart';
 
 class LoginScreen extends StatelessWidget {
   final ThemeHelper t = ThemeHelper();
@@ -16,47 +17,12 @@ class LoginScreen extends StatelessWidget {
     Map<String, String> body = {"email": email.text.toString()};
     var map = await a.login(body);
     if (map["success"] == true) {
-      Get.to(() => OTPScreen());
+      Get.to(() => OTPScreen(
+            email: email.text.toString(),
+          ));
     } else {
-      await _showMyDialog(context, map["message"]);
+      await showMyDialog(context, map["message"]);
     }
-  }
-
-  Future<void> _showMyDialog(BuildContext context, String message) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: t.altBgColor,
-          title: Text(
-            'Message',
-            style: t.smallTextBold,
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(
-                  message,
-                  style: t.smallText,
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'Close',
-                style: t.smallTextColor,
-              ),
-              onPressed: () {
-                Get.back();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override

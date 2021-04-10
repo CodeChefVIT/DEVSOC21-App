@@ -4,67 +4,37 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPScreen extends StatefulWidget {
+  final String email;
+  OTPScreen({@required this.email});
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
 
 class _OTPScreenState extends State<OTPScreen> {
   String currentText;
+
   TextEditingController textEditingController = TextEditingController();
   ThemeHelper t = ThemeHelper();
   final Auth a = Auth();
   _submit(BuildContext context) async {
-    Map<String, String> body = {"otp": currentText.toString()};
+    Map<String, String> body = {
+      "otp": currentText.toString(),
+      "email": widget.email,
+    };
     var map = await a.checkOTP(body);
     print(map);
     if (map["success"] == true) {
       Get.to(() => LandingScreen());
     } else if (map["statusCode"] == "500" || map["statusCode"] == "402") {
-      await _showMyDialog(context, map["message"]);
+      await showMyDialog(context, map["message"]);
       Get.back();
     } else {
-      await _showMyDialog(context, map["message"]);
+      await showMyDialog(context, map["message"]);
     }
-  }
-
-  Future<void> _showMyDialog(BuildContext context, String message) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: t.altBgColor,
-          title: Text(
-            'Message',
-            style: t.smallTextBold,
-          ),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(
-                  message,
-                  style: t.smallText,
-                ),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text(
-                'Close',
-                style: t.smallTextColor,
-              ),
-              onPressed: () {
-                Get.back();
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
   @override
