@@ -10,6 +10,7 @@ class Announcements extends GetxController {
   Future<Map> getAnnouncements() async {
     var url = Uri.parse(announcementRoute);
     try {
+      announcementsLoader.value = true;
       var response = await http.get(
         url,
       );

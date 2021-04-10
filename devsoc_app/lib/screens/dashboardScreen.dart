@@ -42,6 +42,7 @@ class _DashboardState extends State<Dashboard> {
 
   void _onRefresh() async {
     tl.checkTimeOne();
+    getData();
     _refreshController.refreshCompleted();
   }
 
@@ -138,6 +139,9 @@ class _DashboardState extends State<Dashboard> {
                                         }
                                       },
                                       child: Container(
+                                        margin: EdgeInsets.only(
+                                          bottom: s.hHelper(1),
+                                        ),
                                         width: double.maxFinite,
                                         decoration: BoxDecoration(
                                           borderRadius:
