@@ -37,6 +37,7 @@ class Auth extends GetxController {
       var res = json.decode(response.body);
       print(response.statusCode);
       print(res);
+      res["statusCode"] = response.statusCode.toString();
       if (response.statusCode == 200) {
         _token = "Bearer " + res["token"];
         print(_token);

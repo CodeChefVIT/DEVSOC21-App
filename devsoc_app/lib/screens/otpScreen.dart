@@ -19,11 +19,14 @@ class _OTPScreenState extends State<OTPScreen> {
   _submit(BuildContext context) async {
     Map<String, String> body = {"otp": currentText.toString()};
     var map = await a.checkOTP(body);
+    print(map);
     if (map["success"] == true) {
       Get.to(() => LandingScreen());
-    } else {
+    } else if (map["statusCode"] == "500" || map["statusCode"] == "402") {
       await _showMyDialog(context, map["message"]);
       Get.back();
+    } else {
+      await _showMyDialog(context, map["message"]);
     }
   }
 
