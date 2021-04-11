@@ -145,7 +145,7 @@ class _DashboardState extends State<Dashboard> {
                                         width: double.maxFinite,
                                         decoration: BoxDecoration(
                                           borderRadius:
-                                              BorderRadius.circular(30),
+                                              BorderRadius.circular(20),
                                           color: t.activeColor,
                                         ),
                                         padding: EdgeInsets.symmetric(
