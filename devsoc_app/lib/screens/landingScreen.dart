@@ -6,6 +6,7 @@ import 'package:devsoc_app/screens/profileScreen.dart';
 import 'package:devsoc_app/screens/timelineScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -39,6 +40,7 @@ class _LandingScreenState extends State<LandingScreen> {
           type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
           onTap: (index) {
+            HapticFeedback.lightImpact();
             setState(() {
               currentIndex = index;
             });

@@ -5,6 +5,7 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/otpScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:devsoc_app/utils/errorDialog.dart';
@@ -178,6 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: TextButton(
                         onPressed: () {
                           if (!_isButtonDisabled) {
+                            HapticFeedback.lightImpact();
                             _submit(context);
                           }
                         },

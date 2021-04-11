@@ -5,6 +5,7 @@ import 'package:devsoc_app/utils/loader.dart';
 import 'package:devsoc_app/widgets/timelineBg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -109,6 +110,7 @@ class _TimelineState extends State<Timeline> {
                           children: [
                             GestureDetector(
                               onTap: () {
+                                HapticFeedback.lightImpact();
                                 tl.current.value = 1;
                                 tl.checkTimeOne();
                                 setState(() {
@@ -152,6 +154,7 @@ class _TimelineState extends State<Timeline> {
                             ),
                             GestureDetector(
                               onTap: () {
+                                HapticFeedback.lightImpact();
                                 tl.current.value = 2;
                                 tl.checkTimeOne();
                                 setState(() {
@@ -195,6 +198,7 @@ class _TimelineState extends State<Timeline> {
                             ),
                             GestureDetector(
                               onTap: () {
+                                HapticFeedback.lightImpact();
                                 tl.current.value = 3;
                                 tl.checkTimeOne();
                                 setState(() {
