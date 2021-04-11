@@ -9,21 +9,33 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:devsoc_app/utils/errorDialog.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final ThemeHelper t = ThemeHelper();
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final Auth a = Auth();
   _submit(BuildContext context) async {
-    Map<String, String> body = {"email": email.text.toString()};
-    var map = await a.login(body);
-    if (map["success"] == true) {
-      Get.to(() => OTPScreen(
-            email: email.text.toString(),
-          ));
-    } else {
-      await showMyDialog(context, map["message"]);
+    if (_formKey.currentState.validate()) {
+      _isButtonDisabled = true;
+      Map<String, String> body = {"email": email.text.toString()};
+      var map = await a.login(body);
+      if (map["success"] == true) {
+        Get.to(() => OTPScreen(
+              email: email.text.toString(),
+            ));
+      } else {
+        await showMyDialog(context, map["message"]);
+        _isButtonDisabled = false;
+      }
     }
   }
+
+  bool _isButtonDisabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -94,63 +106,67 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(
                       height: s.hHelper(3),
                     ),
-                    TextFormField(
-                      style: t.smallTextColor,
-                      cursorColor: t.activeColor,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter some text';
-                        }
-                        return null;
-                      },
-                      controller: email,
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: s.wHelper(5)),
-                        border: OutlineInputBorder(
-                          gapPadding: 1,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(12),
+                    Form(
+                      key: _formKey,
+                      child: TextFormField(
+                        style: t.smallTextColor,
+                        cursorColor: t.activeColor,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        controller: email,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: s.wHelper(5)),
+                          border: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(12),
+                            ),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
                           ),
-                          borderSide: BorderSide(
-                            color: t.activeColor,
-                            width: 1,
+                          focusedBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
                           ),
+                          enabledBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.errorColor,
+                              width: 1,
+                            ),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          hintText: "email",
+                          hintStyle: t.smallTextColor,
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          gapPadding: 1,
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          borderSide: BorderSide(
-                            color: t.activeColor,
-                            width: 1,
-                          ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          gapPadding: 1,
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          borderSide: BorderSide(
-                            color: t.activeColor,
-                            width: 1,
-                          ),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          gapPadding: 1,
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          borderSide: BorderSide(
-                            color: t.errorColor,
-                            width: 1,
-                          ),
-                        ),
-                        disabledBorder: OutlineInputBorder(
-                          gapPadding: 1,
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                          borderSide: BorderSide(
-                            color: t.activeColor,
-                            width: 1,
-                          ),
-                        ),
-                        hintText: "email",
-                        hintStyle: t.smallTextColor,
                       ),
                     ),
                     SizedBox(
@@ -161,7 +177,9 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       child: TextButton(
                         onPressed: () {
-                          _submit(context);
+                          if (!_isButtonDisabled) {
+                            _submit(context);
+                          }
                         },
                         child: Container(
                           height: s.hHelper(8),

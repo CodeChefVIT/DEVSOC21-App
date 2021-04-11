@@ -30,7 +30,7 @@ class _FunState extends State<Fun> {
                   borderRadius: BorderRadius.all(
                     Radius.circular(10),
                   ),
-                  color: t.activeColor,
+                  color: t.altBgColor,
                 ),
                 padding: EdgeInsets.all(20),
                 child: Container(
