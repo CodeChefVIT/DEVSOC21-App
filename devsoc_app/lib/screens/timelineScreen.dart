@@ -19,6 +19,8 @@ class _TimelineState extends State<Timeline> {
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   void _onRefresh() async {
+    // fetchData();
+    tl.refreshTimeline();
     tl.checkTimeOne();
     setState(() {
       one = true;
