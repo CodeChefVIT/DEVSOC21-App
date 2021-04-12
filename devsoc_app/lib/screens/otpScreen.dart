@@ -3,7 +3,6 @@ import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
