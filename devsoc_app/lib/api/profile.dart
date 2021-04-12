@@ -11,7 +11,9 @@ class ProfileGet extends GetxController {
 
   Future<Map> getProfile(String token) async {
     final prefs = await SharedPreferences.getInstance();
+
     if (!prefs.containsKey("profile")) {
+      print("no lol no");
       var url = Uri.parse(profileRoute);
       try {
         var response = await http.get(url, headers: {

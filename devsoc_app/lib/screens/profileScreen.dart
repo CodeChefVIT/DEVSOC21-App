@@ -180,7 +180,8 @@ class _ProfileState extends State<Profile> {
                                         Text(
                                           "Idea " +
                                               profileDetails["user"]["team"]
-                                                  ["submission"]["name"],
+                                                      ["submission"]["name"]
+                                                  .toString(),
                                           style: t.smallTextBold,
                                         ),
                                         SizedBox(
