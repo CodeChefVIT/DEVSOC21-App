@@ -4,18 +4,18 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 
-class Announcements extends GetxController {
-  RxBool announcementsLoader = true.obs;
+class FormGet extends GetxController {
+  RxBool formLoader = true.obs;
 
-  Future<Map> getAnnouncements() async {
-    var url = Uri.parse(announcementRoute);
+  Future<Map> getForm() async {
+    var url = Uri.parse(formRoute);
     try {
-      announcementsLoader.value = true;
+      formLoader.value = true;
       var response = await http.get(
         url,
       );
       var res = json.decode(response.body);
-      announcementsLoader.value = false;
+      formLoader.value = false;
       return res;
     } catch (e) {
       return {"message": "error"};

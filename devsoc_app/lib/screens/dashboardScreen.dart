@@ -37,7 +37,6 @@ class _DashboardState extends State<Dashboard> {
 
   getData() async {
     announcementDetails = await a.getAnnouncements();
-    print(announcementDetails);
   }
 
   void _onRefresh() async {
