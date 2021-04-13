@@ -155,9 +155,25 @@ class _DashboardState extends State<Dashboard> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              announcement["title"],
-                                              style: t.announcementTitle,
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  announcement["title"],
+                                                  style: t.announcementTitle,
+                                                ),
+                                                Spacer(),
+                                                announcement["link"] != null
+                                                    ? Container(
+                                                        child: Icon(
+                                                          CupertinoIcons.link,
+                                                          color: t.white,
+                                                          size: 20,
+                                                        ),
+                                                      )
+                                                    : Container()
+                                              ],
                                             ),
                                             SizedBox(
                                               height: s.hHelper(0.5),
