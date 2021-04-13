@@ -4,7 +4,7 @@ String websiteLink = "https://codechefvit.com";
 String devsocLink = "https://hackwith.codechefvit.com";
 String githubLink = "https://github.com/CodeChefVIT";
 
-String rootURL = "https://devsoc-test.herokuapp.com/";
+String rootURL = "https://devsoc-api.codechefvit.com/";
 
 String timelineRoute = rootURL + "appdata";
 String loginRoute = rootURL + "app/getOTP";

@@ -2,6 +2,7 @@ import 'package:devsoc_app/api/forms.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/formSubmitted.dart';
+import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,8 +56,11 @@ class _FormsState extends State<Forms> {
         }
       }
       resSubmit = await f.sendForm(form);
-      print(resSubmit);
-      Get.to(() => FormSubmitted());
+      if (resSubmit["statusCode"] != "200") {
+        await showMyDialog(context, resSubmit["message"]);
+      } else {
+        Get.to(() => FormSubmitted());
+      }
     }
   }
 

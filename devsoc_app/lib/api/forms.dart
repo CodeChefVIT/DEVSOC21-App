@@ -30,13 +30,17 @@ class FormGet extends GetxController {
     final extractedUserData =
         json.decode(prefs.getString('userData')) as Map<String, Object>;
     var _token = extractedUserData['token'].toString();
+    Map<dynamic, dynamic> send = {};
+    send["questions"] = data["questions"];
+    String body = json.encode(send);
     try {
       formLoader.value = true;
       var response = await http.post(
         url,
-        body: jsonEncode(data),
+        body: body,
         headers: {
           HttpHeaders.authorizationHeader: _token,
+          HttpHeaders.contentTypeHeader: 'application/json;charset=UTF-8',
         },
       );
       var res = json.decode(response.body);
