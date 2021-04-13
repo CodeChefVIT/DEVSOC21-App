@@ -12,3 +12,4 @@ String otpRoute = rootURL + "app/checkOtp";
 String profileRoute = rootURL + "app/getProfile";
 String announcementRoute = rootURL + "app/getAnnouncements";
 String formRoute = rootURL + "app/getForm";
+String submitFormRoute = rootURL + "app/submitForm";

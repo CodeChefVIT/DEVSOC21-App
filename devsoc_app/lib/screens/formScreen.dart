@@ -16,43 +16,8 @@ class _FormsState extends State<Forms> {
   ThemeHelper t = new ThemeHelper();
   FormGet f = FormGet();
   Map<String, dynamic> res = {};
-  Map<String, dynamic> form = {
-    // "title": "Pizza Form",
-    // "questions": [
-    //   {
-    //     "question": "Email",
-    //     "type": "textfield",
-    //     "value": null,
-    //   },
-    //   {
-    //     "question": "Name",
-    //     "type": "textfield",
-    //     "value": null,
-    //   },
-    //   {
-    //     "question": "T Shirt Size",
-    //     "type": "dropdown",
-    //     "dropdownOptions": <String>[
-    //       "S",
-    //       "M",
-    //       "L",
-    //       "XL",
-    //     ],
-    //     "value": null,
-    //   },
-    //   {
-    //     "question": "Tech Stack",
-    //     "type": "checkbox",
-    //     "checkboxOptions": [
-    //       "Frontend Web",
-    //       "App",
-    //       "Backend",
-    //       "Design",
-    //     ],
-    //     "value": [],
-    //   },
-    // ],
-  };
+  Map<dynamic, dynamic> resSubmit = {};
+  Map<dynamic, dynamic> form = {};
 
   Map<String, bool> checkBoxMap = {};
   final _formKey = GlobalKey<FormState>();
@@ -75,10 +40,9 @@ class _FormsState extends State<Forms> {
         questions["value"] = questions["dropdownOptions"][0];
       }
     }
-    print(form);
   }
 
-  void _submit() {
+  void _submit() async {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState.validate()) {
       for (var questions in form["questions"]) {
@@ -90,6 +54,8 @@ class _FormsState extends State<Forms> {
           }
         }
       }
+      resSubmit = await f.sendForm(form);
+      print(resSubmit);
       Get.to(() => FormSubmitted());
     }
   }
