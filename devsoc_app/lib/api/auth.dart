@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:devsoc_app/constants/links.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -33,7 +34,11 @@ class Auth extends GetxController {
   Future<Map> checkOTP(Map<String, String> body) async {
     var url = Uri.parse(otpRoute);
     try {
-      var response = await http.post(url, body: body);
+      var response = await http.post(
+        url,
+        body: jsonEncode(body),
+        headers: {HttpHeaders.contentTypeHeader: "application/json"},
+      );
       var res = json.decode(response.body);
       print(response.statusCode);
       print(res);

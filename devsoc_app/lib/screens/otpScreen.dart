@@ -2,6 +2,7 @@ import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:devsoc_app/utils/errorDialog.dart';
@@ -21,9 +22,15 @@ class _OTPScreenState extends State<OTPScreen> {
   ThemeHelper t = ThemeHelper();
   final Auth a = Auth();
   _submit(BuildContext context) async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    String fcmToken;
+    await messaging.getToken().then((value) {
+      fcmToken = value;
+    });
     Map<String, String> body = {
       "otp": currentText.toString(),
       "email": widget.email,
+      "fcmToken": fcmToken,
     };
     var map = await a.checkOTP(body);
     print(map);
