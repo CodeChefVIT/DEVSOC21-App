@@ -11,6 +11,7 @@ class TimelineChecker extends GetxController {
       var response = await Dio().get(timelineRoute);
       Map<dynamic, dynamic> res = json.decode(response.toString());
       timeline = res["data"];
+      print(timeline);
     } catch (e) {
       print(e);
     }
