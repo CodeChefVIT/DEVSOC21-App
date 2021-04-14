@@ -9,6 +9,7 @@ String rootURL = "https://devsoc-test.herokuapp.com/";
 
 String timelineRoute = rootURL + "appdata";
 String loginRoute = rootURL + "app/getOTP";
+String logoutRoute = rootURL + "app/logout";
 String otpRoute = rootURL + "app/checkOtp";
 String profileRoute = rootURL + "app/getProfile";
 String announcementRoute = rootURL + "app/getAnnouncements";

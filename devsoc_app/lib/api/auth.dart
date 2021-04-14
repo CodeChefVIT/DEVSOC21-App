@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:devsoc_app/api/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:devsoc_app/constants/links.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -15,6 +16,8 @@ class Auth extends GetxController {
   bool get isReg {
     return token != null;
   }
+
+  ProfileGet p = ProfileGet();
 
   Future<Map> login(Map<String, String> body) async {
     var url = Uri.parse(loginRoute);
@@ -77,10 +80,25 @@ class Auth extends GetxController {
 
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-    authSuccess.value = false;
-    _token = null;
-    _email = null;
+    final extractedUserData =
+        json.decode(prefs.getString('userData')) as Map<String, Object>;
+    var token = extractedUserData['token'];
+    try {
+      var _ = await http.post(
+        Uri.parse(logoutRoute),
+        headers: {
+          HttpHeaders.contentTypeHeader: "application/json",
+          HttpHeaders.authorizationHeader: token,
+        },
+      );
+      print(_.body);
+      await prefs.clear();
+      authSuccess.value = false;
+      _token = null;
+      _email = null;
+    } catch (e) {
+      print(e);
+    }
   }
 
   RxBool authSuccess = false.obs;

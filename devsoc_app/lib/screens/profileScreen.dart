@@ -284,7 +284,9 @@ class _ProfileState extends State<Profile> {
                             Spacer(),
                             GestureDetector(
                               onTap: () async {
+                                profile.profileLoader.value = true;
                                 await auth.logout();
+                                profile.profileLoader.value = false;
                                 Get.to(() => LoginScreen());
                               },
                               child: Icon(
