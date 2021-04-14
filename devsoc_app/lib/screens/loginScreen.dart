@@ -76,7 +76,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: SvgPicture.asset(
                         devsoc,
-                        color: t.activeColor,
                         height: s.hHelper(25),
                       ),
                     ),

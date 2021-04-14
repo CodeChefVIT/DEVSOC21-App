@@ -1,11 +1,12 @@
 import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
 import 'package:devsoc_app/screens/loginScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'utils/loader.dart';
 
 class MyApp extends StatefulWidget {
@@ -22,7 +23,29 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.light,
     );
+    _fcm();
     super.initState();
+  }
+
+  _fcm() async {
+    await Firebase.initializeApp();
+    FirebaseMessaging.onMessage.listen((event) {
+      print(event);
+    });
+
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    messaging.getToken().then((value) => print(value));
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    print('User granted permission: ${settings.authorizationStatus}');
   }
 
   Auth auth = Auth();

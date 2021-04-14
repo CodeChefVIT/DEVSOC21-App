@@ -41,6 +41,8 @@ dependencies:
   webview_flutter: ^2.0.2
   pull_to_refresh: ^1.6.4
   get: ^3.26.0
+  firebase_core: ^1.0.3
+  firebase_messaging: ^9.1.1
 
 dev_dependencies:
   flutter_test:
