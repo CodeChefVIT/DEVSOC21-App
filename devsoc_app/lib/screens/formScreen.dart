@@ -6,6 +6,7 @@ import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class Forms extends StatefulWidget {
@@ -19,7 +20,7 @@ class _FormsState extends State<Forms> {
   Map<String, dynamic> res = {};
   Map<dynamic, dynamic> resSubmit = {};
   Map<dynamic, dynamic> form = {};
-
+  bool _isButtonDisabled = false;
   Map<String, bool> checkBoxMap = {};
   final _formKey = GlobalKey<FormState>();
 
@@ -46,6 +47,7 @@ class _FormsState extends State<Forms> {
   void _submit() async {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState.validate()) {
+      _isButtonDisabled = true;
       for (var questions in form["questions"]) {
         if (questions["type"] == "checkbox") {
           for (var i in questions["checkboxOptions"]) {
@@ -57,6 +59,7 @@ class _FormsState extends State<Forms> {
       }
       resSubmit = await f.sendForm(form);
       if (resSubmit["statusCode"] != "200") {
+        _isButtonDisabled = false;
         await showMyDialog(context, resSubmit["message"]);
       } else {
         Get.to(() => FormSubmitted());
@@ -278,7 +281,10 @@ class _FormsState extends State<Forms> {
                             alignment: Alignment.center,
                             child: TextButton(
                               onPressed: () {
-                                _submit();
+                                if (!_isButtonDisabled) {
+                                  HapticFeedback.lightImpact();
+                                  _submit();
+                                }
                               },
                               child: Container(
                                 height: s.hHelper(8),
