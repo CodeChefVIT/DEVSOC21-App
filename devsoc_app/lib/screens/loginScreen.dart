@@ -53,167 +53,160 @@ class _LoginScreenState extends State<LoginScreen> {
       onWillPop: () async => false,
       child: Scaffold(
         backgroundColor: t.bgColor,
-        body: loader
-            ? Padding(
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                height: s.hHelper(100),
+                width: s.wHelper(100),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment(0.0, 0.1),
+                    end: Alignment.bottomCenter,
+                    colors: <Color>[
+                      t.bgColor,
+                      t.secondaryBgColor,
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: s.wHelper(6),
                 ),
-                child: Center(
-                  child: CustomLoader(
-                    title: "Sign in",
-                  ),
-                ),
-              )
-            : SingleChildScrollView(
-                child: Stack(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
+                    SizedBox(
+                      height: s.hHelper(12),
+                    ),
                     Container(
-                      height: s.hHelper(100),
-                      width: s.wHelper(100),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment(0.0, 0.1),
-                          end: Alignment.bottomCenter,
-                          colors: <Color>[
-                            t.bgColor,
-                            t.secondaryBgColor,
+                      width: double.infinity,
+                      child: SvgPicture.asset(
+                        devsoc,
+                        height: s.hHelper(25),
+                      ),
+                    ),
+                    SizedBox(
+                      height: s.hHelper(3),
+                    ),
+                    Center(
+                      child: RichText(
+                        text: TextSpan(
+                          text: 'DEVSOC',
+                          style: t.title,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: '\'21',
+                              style: t.titleColor,
+                            ),
                           ],
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: s.wHelper(6),
+                    SizedBox(
+                      height: s.hHelper(8),
+                    ),
+                    Text(
+                      "Sign in",
+                      style: t.heading,
+                    ),
+                    SizedBox(
+                      height: s.hHelper(3),
+                    ),
+                    Form(
+                      key: _formKey,
+                      child: TextFormField(
+                        style: t.smallTextColor,
+                        cursorColor: t.activeColor,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                        controller: email,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: s.wHelper(5)),
+                          border: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(12),
+                            ),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.errorColor,
+                              width: 1,
+                            ),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            gapPadding: 1,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                            borderSide: BorderSide(
+                              color: t.activeColor,
+                              width: 1,
+                            ),
+                          ),
+                          hintText: "email",
+                          hintStyle: t.smallTextColor,
+                        ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            height: s.hHelper(12),
+                    ),
+                    SizedBox(
+                      height: s.hHelper(6),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: () {
+                          if (!_isButtonDisabled) {
+                            HapticFeedback.lightImpact();
+                            _submit(context);
+                          }
+                        },
+                        child: Container(
+                          height: s.hHelper(8),
+                          width: s.wHelper(40),
+                          decoration: BoxDecoration(
+                            color: t.activeColor,
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          Container(
-                            width: double.infinity,
-                            child: SvgPicture.asset(
-                              devsoc,
-                              height: s.hHelper(25),
-                            ),
-                          ),
-                          SizedBox(
-                            height: s.hHelper(3),
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'DEVSOC',
-                                style: t.title,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: '\'21',
-                                    style: t.titleColor,
+                          child: loader
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor:
+                                        new AlwaysStoppedAnimation<Color>(
+                                            t.white),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: s.hHelper(8),
-                          ),
-                          Text(
-                            "Sign in",
-                            style: t.heading,
-                          ),
-                          SizedBox(
-                            height: s.hHelper(3),
-                          ),
-                          Form(
-                            key: _formKey,
-                            child: TextFormField(
-                              style: t.smallTextColor,
-                              cursorColor: t.activeColor,
-                              validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                                return null;
-                              },
-                              controller: email,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                    horizontal: s.wHelper(5)),
-                                border: OutlineInputBorder(
-                                  gapPadding: 1,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(12),
-                                  ),
-                                  borderSide: BorderSide(
-                                    color: t.activeColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  gapPadding: 1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  borderSide: BorderSide(
-                                    color: t.activeColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  gapPadding: 1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  borderSide: BorderSide(
-                                    color: t.activeColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  gapPadding: 1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  borderSide: BorderSide(
-                                    color: t.errorColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                disabledBorder: OutlineInputBorder(
-                                  gapPadding: 1,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12)),
-                                  borderSide: BorderSide(
-                                    color: t.activeColor,
-                                    width: 1,
-                                  ),
-                                ),
-                                hintText: "email",
-                                hintStyle: t.smallTextColor,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: s.hHelper(6),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            alignment: Alignment.center,
-                            child: TextButton(
-                              onPressed: () {
-                                if (!_isButtonDisabled) {
-                                  HapticFeedback.lightImpact();
-                                  _submit(context);
-                                }
-                              },
-                              child: Container(
-                                height: s.hHelper(8),
-                                width: s.wHelper(40),
-                                decoration: BoxDecoration(
-                                  color: t.activeColor,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Row(
+                                )
+                              : Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -229,15 +222,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ],
                 ),
               ),
+            ],
+          ),
+        ),
       ),
     );
   }
