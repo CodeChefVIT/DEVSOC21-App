@@ -29,11 +29,10 @@ class _AnnakillState extends State<Annakill> {
         borderRadius: BorderRadius.all(
           Radius.circular(10),
         ),
-        color: t.altBgColor,
       ),
-      // padding: EdgeInsets.all(20),
+      alignment: Alignment.center,
       child: Container(
-        width: s.wHelper(80),
+        width: s.wHelper(50),
         height: s.hHelper(65),
         child: WebView(
           javascriptMode: JavascriptMode.unrestricted,

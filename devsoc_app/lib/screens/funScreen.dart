@@ -158,7 +158,9 @@ class _FunState extends State<Fun> {
                     ? SizedBox(
                         height: s.hHelper(8),
                       )
-                    : Container(),
+                    : SizedBox(
+                        height: s.hHelper(2),
+                      ),
                 Row(
                   children: [
                     Text(

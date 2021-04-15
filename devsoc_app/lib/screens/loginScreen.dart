@@ -55,20 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SingleChildScrollView(
           child: Stack(
             children: [
-              Container(
-                height: s.hHelper(100),
-                width: s.wHelper(100),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment(0.0, 0.1),
-                    end: Alignment.bottomCenter,
-                    colors: <Color>[
-                      t.bgColor,
-                      t.secondaryBgColor,
-                    ],
-                  ),
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: s.wHelper(6),
@@ -172,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 1,
                             ),
                           ),
-                          hintText: "email",
+                          hintText: "Email",
                           hintStyle: t.smallTextColor,
                         ),
                       ),
