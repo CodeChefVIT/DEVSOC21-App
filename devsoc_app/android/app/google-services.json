@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:700548721748:android:ea37bd0094fd005519d1c1",
+        "mobilesdk_app_id": "1:700548721748:android:6a5456265de1f6c019d1c1",
         "android_client_info": {
-          "package_name": "com.example.devsoc_app"
+          "package_name": "com.codechefvit.devsoc21"
         }
       },
       "oauth_client": [
@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "700548721748-sbddejs76egpiqf95mqjpk9alsqranj5.apps.googleusercontent.com",
+              "client_id": "700548721748-q8rg3sh6vgtti5fqg4enhhp5jmdpdao1.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.44t4nk1.devsocApp"
+                "bundle_id": "com.44t4nk1.devsocApp2"
               }
             }
           ]
