@@ -153,7 +153,8 @@ class _ProfileState extends State<Profile> {
                                   "Create a team to submit an Idea",
                                   style: t.smallText,
                                 )
-                              : profileDetails["user"]["team"]["submission"] ==
+                              : profileDetails["user"]["team"]["submission"]
+                                          ["name"] ==
                                       null
                                   ? TextButton(
                                       onPressed: () {
@@ -177,15 +178,23 @@ class _ProfileState extends State<Profile> {
                                     )
                                   : Column(
                                       children: [
-                                        Text(
-                                          "Idea " +
-                                              profileDetails["user"]["team"]
-                                                      ["submission"]["name"]
-                                                  .toString(),
-                                          style: t.smallTextBold,
+                                        RichText(
+                                          text: TextSpan(
+                                            text: 'Idea ',
+                                            style: t.smallTextBold,
+                                            children: <TextSpan>[
+                                              TextSpan(
+                                                text: profileDetails["user"]
+                                                            ["team"]
+                                                        ["submission"]["name"]
+                                                    .toString(),
+                                                style: t.smallText,
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                         SizedBox(
-                                          height: s.hHelper(0.5),
+                                          height: s.hHelper(2),
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -200,8 +209,18 @@ class _ProfileState extends State<Profile> {
                                               width: s.wHelper(2),
                                             ),
                                             Icon(
-                                              CupertinoIcons.check_mark,
-                                              color: t.acceptColor,
+                                              IconData(
+                                                profileDetails["user"]["team"]
+                                                    ["submission"]["icon"],
+                                                fontFamily:
+                                                    CupertinoIcons.iconFont,
+                                                fontPackage: CupertinoIcons
+                                                    .iconFontPackage,
+                                              ),
+                                              color: Color(
+                                                  profileDetails["user"]["team"]
+                                                          ["submission"]
+                                                      ["iconColor"]),
                                               size: 22,
                                             ),
                                           ],
