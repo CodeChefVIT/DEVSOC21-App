@@ -32,6 +32,12 @@ class _TimelineState extends State<Timeline> {
   }
 
   void initState() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light,
+    );
     fetchData();
     super.initState();
   }

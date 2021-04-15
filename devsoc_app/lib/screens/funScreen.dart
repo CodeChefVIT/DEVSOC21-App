@@ -1,9 +1,10 @@
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
+import 'package:devsoc_app/screens/gameAnnakill.dart';
 import 'package:devsoc_app/screens/gameDevtris.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:flutter/services.dart';
 
 class Fun extends StatefulWidget {
   @override
@@ -11,6 +12,16 @@ class Fun extends StatefulWidget {
 }
 
 class _FunState extends State<Fun> {
+  void initState() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light,
+    );
+    super.initState();
+  }
+
   ThemeHelper t = ThemeHelper();
   bool devTris = false;
   bool annakill = false;
@@ -31,7 +42,8 @@ class _FunState extends State<Fun> {
                     SizedBox(
                       height: s.hHelper(15),
                     ),
-                    DevTris()
+                    devTris ? DevTris() : Container(),
+                    annakill ? Annakill() : Container()
                   ],
                 )
               : Column(
@@ -142,9 +154,11 @@ class _FunState extends State<Fun> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  height: s.hHelper(8),
-                ),
+                !annakill
+                    ? SizedBox(
+                        height: s.hHelper(8),
+                      )
+                    : Container(),
                 Row(
                   children: [
                     Text(
@@ -155,6 +169,12 @@ class _FunState extends State<Fun> {
                     !home
                         ? GestureDetector(
                             onTap: () {
+                              SystemChrome.setPreferredOrientations([
+                                DeviceOrientation.portraitUp,
+                              ]);
+                              SystemChrome.setSystemUIOverlayStyle(
+                                SystemUiOverlayStyle.light,
+                              );
                               setState(() {
                                 home = true;
                                 devTris = false;

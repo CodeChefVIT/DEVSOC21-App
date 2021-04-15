@@ -26,6 +26,12 @@ class _FormsState extends State<Forms> {
 
   void initState() {
     getData();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light,
+    );
     super.initState();
   }
 

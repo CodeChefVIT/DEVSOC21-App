@@ -10,6 +10,7 @@ import 'package:devsoc_app/screens/loginScreen.dart';
 import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -31,6 +32,12 @@ class _ProfileState extends State<Profile> {
   Auth auth = Auth();
   void initState() {
     getData();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.light,
+    );
     super.initState();
   }
 
