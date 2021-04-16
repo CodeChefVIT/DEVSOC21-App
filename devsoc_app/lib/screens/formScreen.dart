@@ -112,7 +112,7 @@ class _FormsState extends State<Forms> {
                                     margin:
                                         EdgeInsets.only(bottom: s.hHelper(2)),
                                     child: TextFormField(
-                                      style: t.smallTextColor,
+                                      style: t.smallText,
                                       cursorColor: t.activeColor,
                                       onChanged: (value) {
                                         question["value"] = value;
