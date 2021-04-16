@@ -3,6 +3,7 @@ String youtubeLink = "https://youtube.com/codechefvit";
 String websiteLink = "https://codechefvit.com";
 String devsocLink = "https://hackwith.codechefvit.com";
 String githubLink = "https://github.com/CodeChefVIT";
+String filterLink1 = "https://www.instagram.com/ar/1095443927619209";
 
 // String rootURL = "https://devsoc-api.codechefvit.com/";
 String rootURL = "https://devsoc-test.herokuapp.com/";

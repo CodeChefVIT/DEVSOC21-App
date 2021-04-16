@@ -1,3 +1,4 @@
+import 'package:devsoc_app/constants/links.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/gameAnnakill.dart';
@@ -5,6 +6,7 @@ import 'package:devsoc_app/screens/gameDevtris.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Fun extends StatefulWidget {
   @override
@@ -141,6 +143,39 @@ class _FunState extends State<Fun> {
                     ),
                     SizedBox(
                       height: s.hHelper(2),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            launch(filterLink1);
+                          },
+                          child: Container(
+                            height: s.wHelper(40),
+                            width: s.wHelper(40),
+                            decoration: BoxDecoration(
+                              color: t.activeColor,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Offline DEVSOC Vibes",
+                                style: t.smallTextBold,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: s.wHelper(40),
+                          width: s.wHelper(40),
+                          decoration: BoxDecoration(
+                            color: t.activeColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
