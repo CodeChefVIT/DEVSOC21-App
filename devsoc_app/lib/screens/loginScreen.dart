@@ -55,6 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SingleChildScrollView(
           child: Stack(
             children: [
+              Container(
+                child: SvgPicture.asset(bg),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: s.wHelper(6),
@@ -70,40 +73,40 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: SvgPicture.asset(
                         devsoc,
-                        height: s.hHelper(25),
+                        height: s.hHelper(18),
                       ),
                     ),
                     SizedBox(
-                      height: s.hHelper(3),
+                      height: s.hHelper(2),
                     ),
                     Center(
                       child: RichText(
                         text: TextSpan(
                           text: 'DEVSOC',
-                          style: t.title,
+                          style: t.devsocTitle,
                           children: <TextSpan>[
                             TextSpan(
                               text: '\'21',
-                              style: t.titleColor,
+                              style: t.devsocTitleColor,
                             ),
                           ],
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: s.hHelper(8),
+                      height: s.hHelper(4),
                     ),
                     Text(
                       "Sign in",
-                      style: t.heading,
+                      style: t.subheading,
                     ),
                     SizedBox(
-                      height: s.hHelper(3),
+                      height: s.hHelper(1.5),
                     ),
                     Form(
                       key: _formKey,
                       child: TextFormField(
-                        style: t.smallTextColor,
+                        style: t.smallText,
                         cursorColor: t.activeColor,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -116,6 +119,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: InputDecoration(
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: s.wHelper(5)),
+                          prefixIcon: Icon(
+                            CupertinoIcons.mail_solid,
+                            color: t.activeColor,
+                          ),
                           border: OutlineInputBorder(
                             gapPadding: 1,
                             borderRadius: BorderRadius.all(
@@ -164,7 +171,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: s.hHelper(6),
+                      height: s.hHelper(8),
                     ),
                     Container(
                       width: double.infinity,
@@ -177,10 +184,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         child: Container(
-                          height: s.hHelper(8),
+                          height: s.hHelper(6),
                           width: s.wHelper(40),
                           decoration: BoxDecoration(
-                            color: t.activeColor,
+                            color: t.secondaryBgColor,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: loader

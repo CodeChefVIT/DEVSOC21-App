@@ -52,6 +52,10 @@ class _FunState extends State<Fun> {
                     SizedBox(
                       height: s.hHelper(15),
                     ),
+                    Text(
+                      "Games",
+                      style: t.subheading,
+                    ),
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -128,23 +132,16 @@ class _FunState extends State<Fun> {
                         ),
                       ),
                     ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.all(
-                    //       Radius.circular(10),
-                    //     ),
-                    //     color: t.altBgColor,
-                    //   ),
-                    //   padding: EdgeInsets.all(20),
-                    //   child: Container(
-                    //     width: s.wHelper(100),
-                    //     height: s.hHelper(60),
-                    //     child: WebView(
-                    //       javascriptMode: JavascriptMode.unrestricted,
-                    //       initialUrl: 'https://devtris.codechefvit.com',
-                    //     ),
-                    //   ),
-                    // ),
+                    SizedBox(
+                      height: s.hHelper(2),
+                    ),
+                    Text(
+                      "Filters",
+                      style: t.subheading,
+                    ),
+                    SizedBox(
+                      height: s.hHelper(2),
+                    ),
                   ],
                 ),
           Container(

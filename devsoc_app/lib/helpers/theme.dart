@@ -18,6 +18,20 @@ class ThemeHelper {
     letterSpacing: 2,
   );
 
+  TextStyle devsocTitle = GoogleFonts.montserrat(
+    color: Color(0xffe8ecff),
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 2,
+  );
+
+  TextStyle devsocTitleColor = GoogleFonts.montserrat(
+    color: Color(0xff147ffd),
+    fontSize: 32,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 2,
+  );
+
   TextStyle announcementTitle = GoogleFonts.montserrat(
     color: Color(0xffe8ecff),
     fontSize: 18,

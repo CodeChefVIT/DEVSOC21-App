@@ -216,7 +216,7 @@ class _ProfileState extends State<Profile> {
                                               width: s.wHelper(2),
                                             ),
                                             Icon(
-                                              IconData(
+                                              new IconData(
                                                 profileDetails["user"]["team"]
                                                     ["submission"]["icon"],
                                                 fontFamily:
