@@ -33,15 +33,23 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         loader = false;
       });
+      _isButtonDisabled = false;
       if (map["success"] == true) {
-        Get.to(() => OTPScreen(
-              email: email.text.toString(),
-            ));
+        Get.to(
+          () => OTPScreen(
+            email: email.text.toString(),
+          ),
+        );
       } else {
         showErrorToast(map["message"], context);
         _isButtonDisabled = false;
       }
     }
+  }
+
+  void initState() {
+    _isButtonDisabled = false;
+    super.initState();
   }
 
   bool _isButtonDisabled = false;

@@ -5,6 +5,7 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
 import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,12 +41,19 @@ class _OTPScreenState extends State<OTPScreen> {
       Get.to(() => LandingScreen());
     } else if (map["statusCode"] == "500" || map["statusCode"] == "402") {
       showErrorToast("OTP Expired", context);
+      setState(() {
+        textEditingController.clear();
+      });
     } else {
       showErrorToast(map["message"], context);
+      setState(() {
+        textEditingController.clear();
+      });
     }
   }
 
   bool _isButtonDisabled = false;
+  bool loader = false;
 
   Future<bool> _onBackPressed() {
     return showDialog(
@@ -92,6 +100,9 @@ class _OTPScreenState extends State<OTPScreen> {
 
   _resendOTP() async {
     FocusScope.of(context).unfocus();
+    setState(() {
+      loader = true;
+    });
     _isButtonDisabled = true;
     Map<String, String> body = {"email": widget.email};
     var map = await a.login(body);
@@ -113,9 +124,16 @@ class _OTPScreenState extends State<OTPScreen> {
           behavior: SnackBarBehavior.floating,
         ),
       );
+      _isButtonDisabled = false;
+      setState(() {
+        loader = false;
+      });
     } else {
       showErrorToast(map["message"], context);
       _isButtonDisabled = false;
+      setState(() {
+        loader = false;
+      });
     }
   }
 
@@ -149,8 +167,24 @@ class _OTPScreenState extends State<OTPScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          SizedBox(
-                            height: s.hHelper(8),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: s.hHelper(5)),
+                                child: IconButton(
+                                  icon: Icon(
+                                    CupertinoIcons.chevron_back,
+                                    color: t.white,
+                                  ),
+                                  onPressed: () {
+                                    _onBackPressed();
+                                  },
+                                ),
+                              ),
+                              SizedBox(
+                                height: s.hHelper(8),
+                              ),
+                            ],
                           ),
                           Container(
                             width: double.infinity,
@@ -246,20 +280,39 @@ class _OTPScreenState extends State<OTPScreen> {
                           _resendOTP();
                         }
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: s.wHelper(5),
-                          vertical: s.hHelper(1),
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: t.secondaryBgColor,
-                        ),
-                        child: Text(
-                          "Resend OTP",
-                          style: t.smallTextBold,
-                        ),
-                      ),
+                      child: loader
+                          ? Container(
+                              height: s.hHelper(6),
+                              width: s.wHelper(40),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: t.secondaryBgColor,
+                              ),
+                              child: Center(
+                                child: SizedBox(
+                                  height: s.hHelper(1.5),
+                                  width: s.hHelper(1.5),
+                                  child: CircularProgressIndicator(
+                                    valueColor:
+                                        new AlwaysStoppedAnimation<Color>(
+                                            t.white),
+                                  ),
+                                ),
+                              ))
+                          : Container(
+                              height: s.hHelper(6),
+                              width: s.wHelper(40),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: t.secondaryBgColor,
+                              ),
+                              child: Text(
+                                "Resend OTP",
+                                style: t.smallTextBold,
+                              ),
+                            ),
                     ),
                   ],
                 ),
