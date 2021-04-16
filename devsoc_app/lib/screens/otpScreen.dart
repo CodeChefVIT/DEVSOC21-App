@@ -22,7 +22,7 @@ class _OTPScreenState extends State<OTPScreen> {
   TextEditingController textEditingController = TextEditingController();
   ThemeHelper t = ThemeHelper();
   final Auth a = Auth();
-  _submit(BuildContext context) async {
+  _submit() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
     String fcmToken;
     await messaging.getToken().then((value) {
@@ -38,10 +38,10 @@ class _OTPScreenState extends State<OTPScreen> {
     if (map["success"] == true) {
       Get.to(() => LandingScreen());
     } else if (map["statusCode"] == "500" || map["statusCode"] == "402") {
-      showErrorToast(map["message"]);
+      showErrorToast(map["message"], context);
       Get.back();
     } else {
-      showErrorToast(map["message"]);
+      showErrorToast(map["message"], context);
     }
   }
 
@@ -142,7 +142,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     controller: textEditingController,
                     onCompleted: (v) {
                       FocusScope.of(context).unfocus();
-                      _submit(context);
+                      _submit();
                     },
                     useHapticFeedback: true,
                     hapticFeedbackTypes: HapticFeedbackTypes.medium,

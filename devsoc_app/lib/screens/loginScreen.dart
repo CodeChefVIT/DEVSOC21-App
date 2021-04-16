@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController email = TextEditingController();
   final Auth a = Auth();
-  _submit(BuildContext context) async {
+  _submit() async {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState.validate()) {
       _isButtonDisabled = true;
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               email: email.text.toString(),
             ));
       } else {
-        showErrorToast(map["message"]);
+        showErrorToast(map["message"], context);
         _isButtonDisabled = false;
       }
     }
@@ -185,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           if (!_isButtonDisabled) {
                             HapticFeedback.lightImpact();
-                            _submit(context);
+                            _submit();
                           }
                         },
                         child: Container(

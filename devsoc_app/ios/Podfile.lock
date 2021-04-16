@@ -38,9 +38,6 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
   - Flutter (1.0.0)
-  - fluttertoast (0.0.2):
-    - Flutter
-    - Toast
   - GoogleDataTransport (8.4.0):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
@@ -72,7 +69,6 @@ PODS:
   - PromisesObjC (1.2.12)
   - shared_preferences (0.0.1):
     - Flutter
-  - Toast (4.0.0)
   - url_launcher (0.0.1):
     - Flutter
   - webview_flutter (0.0.1):
@@ -82,7 +78,6 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
@@ -100,7 +95,6 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - Toast
 
 EXTERNAL SOURCES:
   firebase_core:
@@ -109,8 +103,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
   shared_preferences:
@@ -130,14 +122,12 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 5ad92c898e1328b66e8dd58811964d6fe4d334c3
   FirebaseMessaging: 68d1bcb14880189558a8ae57167abe0b7e417232
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
   GoogleUtilities: e1d9ed4e544fc32a93e00e721400cbc3f377200d
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   webview_flutter: 9f491a9b5a66f2573946a389b2677987b0ff8c0b
 

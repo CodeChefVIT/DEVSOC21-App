@@ -40,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
 
   void _launchURL(String _url) async => await canLaunch(_url)
       ? await launch(_url)
-      : showErrorToast("Could not launch URL");
+      : showErrorToast("Could not launch URL", context);
 
   getData() async {
     announcementDetails = await a.getAnnouncements();

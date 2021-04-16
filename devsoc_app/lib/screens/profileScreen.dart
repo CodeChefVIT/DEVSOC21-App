@@ -38,6 +38,7 @@ class _ProfileState extends State<Profile> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle.light,
     );
+
     super.initState();
   }
 
@@ -60,7 +61,7 @@ class _ProfileState extends State<Profile> {
 
   void _launchURL(String _url) async => await canLaunch(_url)
       ? await launch(_url)
-      : showErrorToast("Could not launch URL");
+      : showErrorToast("Could not launch URL", context);
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
@@ -216,14 +217,12 @@ class _ProfileState extends State<Profile> {
                                               width: s.wHelper(2),
                                             ),
                                             Icon(
-                                              new IconData(
-                                                profileDetails["user"]["team"]
-                                                    ["submission"]["icon"],
-                                                fontFamily:
-                                                    CupertinoIcons.iconFont,
-                                                fontPackage: CupertinoIcons
-                                                    .iconFontPackage,
-                                              ),
+                                              profileDetails["user"]["team"]
+                                                              ["submission"]
+                                                          ["icon"] ==
+                                                      62468
+                                                  ? CupertinoIcons.clear
+                                                  : CupertinoIcons.checkmark,
                                               color: Color(
                                                   profileDetails["user"]["team"]
                                                           ["submission"]
