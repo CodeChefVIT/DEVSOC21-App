@@ -2,7 +2,7 @@ import 'package:devsoc_app/api/announcement.dart';
 import 'package:devsoc_app/api/timeline.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
-import 'package:devsoc_app/utils/errorDialog.dart';
+import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:devsoc_app/widgets/linkCard.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/constants/links.dart';
@@ -40,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
 
   void _launchURL(String _url) async => await canLaunch(_url)
       ? await launch(_url)
-      : showMyDialog(context, "Could not launch URL");
+      : showErrorToast("Could not launch URL");
 
   getData() async {
     announcementDetails = await a.getAnnouncements();

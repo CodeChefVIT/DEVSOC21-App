@@ -3,12 +3,12 @@ import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/otpScreen.dart';
+import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:devsoc_app/utils/errorDialog.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController email = TextEditingController();
   final Auth a = Auth();
   _submit(BuildContext context) async {
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState.validate()) {
       _isButtonDisabled = true;
       setState(() {
@@ -37,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
               email: email.text.toString(),
             ));
       } else {
-        await showMyDialog(context, map["message"]);
+        showErrorToast(map["message"]);
         _isButtonDisabled = false;
       }
     }
@@ -56,7 +57,11 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Stack(
             children: [
               Container(
-                child: SvgPicture.asset(bg),
+                height: s.hHelper(100),
+                width: s.wHelper(100),
+                child: SvgPicture.asset(
+                  bg,
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -171,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: s.hHelper(8),
+                      height: s.hHelper(4),
                     ),
                     Container(
                       width: double.infinity,
@@ -187,7 +192,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: s.hHelper(6),
                           width: s.wHelper(40),
                           decoration: BoxDecoration(
-                            color: t.secondaryBgColor,
+                            color: t.activeColor,
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: loader

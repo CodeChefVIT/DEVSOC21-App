@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:devsoc_app/api/auth.dart';
 import 'package:devsoc_app/api/profile.dart';
 import 'package:devsoc_app/constants/links.dart';
@@ -7,6 +6,7 @@ import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/loginScreen.dart';
+import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +60,7 @@ class _ProfileState extends State<Profile> {
 
   void _launchURL(String _url) async => await canLaunch(_url)
       ? await launch(_url)
-      : showMyDialog(context, "Could not launch URL");
+      : showErrorToast("Could not launch URL");
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);

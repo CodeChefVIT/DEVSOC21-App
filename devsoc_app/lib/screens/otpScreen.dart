@@ -3,11 +3,11 @@ import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
+import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:devsoc_app/utils/errorDialog.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -38,10 +38,10 @@ class _OTPScreenState extends State<OTPScreen> {
     if (map["success"] == true) {
       Get.to(() => LandingScreen());
     } else if (map["statusCode"] == "500" || map["statusCode"] == "402") {
-      await showMyDialog(context, map["message"]);
+      showErrorToast(map["message"]);
       Get.back();
     } else {
-      await showMyDialog(context, map["message"]);
+      showErrorToast(map["message"]);
     }
   }
 
@@ -50,20 +50,21 @@ class _OTPScreenState extends State<OTPScreen> {
     SizeHelper s = SizeHelper(context);
     return Scaffold(
       backgroundColor: t.bgColor,
-      body: Stack(
-        children: [
-          Container(
-            child: SvgPicture.asset(bg),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: s.wHelper(6),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Container(
+              height: s.hHelper(100),
+              width: s.wHelper(100),
+              child: SvgPicture.asset(bg),
             ),
-            child: SingleChildScrollView(
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: s.wHelper(6),
+              ),
               child: Column(
                 children: [
                   Container(
-                    color: t.bgColor,
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,12 +73,39 @@ class _OTPScreenState extends State<OTPScreen> {
                         SizedBox(
                           height: s.hHelper(8),
                         ),
+                        Container(
+                          width: double.infinity,
+                          child: SvgPicture.asset(
+                            devsoc,
+                            height: s.hHelper(18),
+                          ),
+                        ),
+                        SizedBox(
+                          height: s.hHelper(2),
+                        ),
+                        Center(
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'DEVSOC',
+                              style: t.devsocTitle,
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: '\'21',
+                                  style: t.devsocTitleColor,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: s.hHelper(4),
+                        ),
                         Text(
                           "Enter OTP",
                           style: t.heading,
                         ),
                         SizedBox(
-                          height: s.hHelper(3),
+                          height: s.hHelper(2),
                         ),
                         Text(
                           "Enter the 6 character OTP you recieved in your mail.",
@@ -87,7 +115,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: s.hHelper(20),
+                    height: s.hHelper(6),
                   ),
                   PinCodeTextField(
                     appContext: context,
@@ -113,6 +141,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     enableActiveFill: true,
                     controller: textEditingController,
                     onCompleted: (v) {
+                      FocusScope.of(context).unfocus();
                       _submit(context);
                     },
                     useHapticFeedback: true,
@@ -131,8 +160,8 @@ class _OTPScreenState extends State<OTPScreen> {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,7 +2,7 @@ import 'package:devsoc_app/api/forms.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/formSubmitted.dart';
-import 'package:devsoc_app/utils/errorDialog.dart';
+import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class _FormsState extends State<Forms> {
       resSubmit = await f.sendForm(form);
       if (resSubmit["statusCode"] != "200") {
         _isButtonDisabled = false;
-        await showMyDialog(context, resSubmit["message"]);
+        await showErrorToast(resSubmit["message"]);
       } else {
         Get.to(() => FormSubmitted());
       }
