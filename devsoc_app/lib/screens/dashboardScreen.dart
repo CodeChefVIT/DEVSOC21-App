@@ -6,9 +6,9 @@ import 'package:devsoc_app/utils/errorToast.dart';
 import 'package:devsoc_app/widgets/linkCard.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/constants/links.dart';
+import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -78,7 +78,7 @@ class _DashboardState extends State<Dashboard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: s.hHelper(14),
+                      height: s.hHelper(15),
                     ),
                     Text(
                       "Announcements",
@@ -90,47 +90,32 @@ class _DashboardState extends State<Dashboard> {
                     a.announcementsLoader.value
                         ? Container(
                             height: s.hHelper(15),
-                            child: DottedBorder(
-                              dashPattern: [20, 25],
+                            decoration: DottedDecoration(
+                              borderRadius: BorderRadius.circular(30),
                               strokeWidth: 2,
-                              borderType: BorderType.RRect,
-                              radius: Radius.circular(30),
                               color: t.activeColor,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                width: double.maxFinite,
-                                child: Center(
-                                  child: CircularProgressIndicator(
-                                    valueColor:
-                                        new AlwaysStoppedAnimation<Color>(
-                                            t.activeColor),
-                                  ),
-                                ),
+                              shape: Shape.box,
+                            ),
+                            child: Center(
+                              child: CircularProgressIndicator(
+                                valueColor: new AlwaysStoppedAnimation<Color>(
+                                    t.activeColor),
                               ),
                             ),
                           )
-                        : announcementDetails["announcements"] == []
+                        : announcementDetails["announcements"] == null
                             ? Container(
                                 height: s.hHelper(15),
-                                child: DottedBorder(
-                                  dashPattern: [20, 25],
+                                decoration: DottedDecoration(
+                                  borderRadius: BorderRadius.circular(30),
                                   strokeWidth: 2,
-                                  borderType: BorderType.RRect,
-                                  radius: Radius.circular(30),
                                   color: t.activeColor,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                    ),
-                                    width: double.maxFinite,
-                                    child: Center(
-                                      child: Text(
-                                        'No Announcements yet!',
-                                        style: t.smallTextColor,
-                                      ),
-                                    ),
+                                  shape: Shape.box,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'No Announcements yet!',
+                                    style: t.smallTextColor,
                                   ),
                                 ),
                               )

@@ -30,14 +30,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.0.0
   timelines: ^0.1.0
-  dotted_border: ^1.0.7
+  dotted_decoration: ^2.0.0
   url_launcher: ^6.0.3
   dio: ^4.0.0
   timer_count_down: ^2.0.0
   shared_preferences: ^2.0.5
   http: ^0.13.1
   pin_code_fields: ^7.0.0
-  flutter_svg: ^0.19.3
+  flutter_svg: ^0.21.0+1
   webview_flutter: ^2.0.2
   pull_to_refresh: ^1.6.4
   get: ^3.26.0
@@ -47,6 +47,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
