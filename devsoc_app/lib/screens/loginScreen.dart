@@ -61,6 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: s.wHelper(100),
                 child: SvgPicture.asset(
                   bg,
+                  fit: BoxFit.fill,
                 ),
               ),
               Padding(

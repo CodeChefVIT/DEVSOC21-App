@@ -56,7 +56,10 @@ class _OTPScreenState extends State<OTPScreen> {
             Container(
               height: s.hHelper(100),
               width: s.wHelper(100),
-              child: SvgPicture.asset(bg),
+              child: SvgPicture.asset(
+                bg,
+                fit: BoxFit.fill,
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(

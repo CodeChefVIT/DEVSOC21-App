@@ -34,9 +34,9 @@ class ThemeHelper {
 
   TextStyle announcementTitle = GoogleFonts.montserrat(
     color: Color(0xffe8ecff),
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: FontWeight.w700,
-    letterSpacing: 2,
+    letterSpacing: 0.1,
   );
 
   TextStyle titleColor = GoogleFonts.montserrat(
