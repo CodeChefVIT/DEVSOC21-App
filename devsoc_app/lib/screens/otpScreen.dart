@@ -143,19 +143,20 @@ class _OTPScreenState extends State<OTPScreen> {
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: t.bgColor,
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Container(
-                height: s.hHelper(100),
-                width: s.wHelper(100),
-                child: SvgPicture.asset(
-                  bg,
-                  fit: BoxFit.fill,
-                ),
+        body: Stack(
+          children: [
+            Container(
+              height: s.hHelper(100),
+              width: s.wHelper(100),
+              child: SvgPicture.asset(
+                bg,
+                fit: BoxFit.fill,
               ),
-              Padding(
+            ),
+            SingleChildScrollView(
+              child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: s.wHelper(6),
                 ),
@@ -169,16 +170,16 @@ class _OTPScreenState extends State<OTPScreen> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                padding: EdgeInsets.only(top: s.hHelper(5)),
-                                child: IconButton(
-                                  icon: Icon(
+                              GestureDetector(
+                                onTap: () {
+                                  _onBackPressed();
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(top: s.hHelper(5)),
+                                  child: Icon(
                                     CupertinoIcons.chevron_back,
                                     color: t.white,
                                   ),
-                                  onPressed: () {
-                                    _onBackPressed();
-                                  },
                                 ),
                               ),
                               SizedBox(
@@ -300,11 +301,14 @@ class _OTPScreenState extends State<OTPScreen> {
                               ),
                             ),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).viewInsets.bottom,
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

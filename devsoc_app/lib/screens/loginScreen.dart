@@ -60,19 +60,20 @@ class _LoginScreenState extends State<LoginScreen> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: t.bgColor,
-        body: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Container(
-                height: s.hHelper(100),
-                width: s.wHelper(100),
-                child: SvgPicture.asset(
-                  bg,
-                  fit: BoxFit.fill,
-                ),
+        body: Stack(
+          children: [
+            Container(
+              height: s.hHelper(100),
+              width: s.wHelper(100),
+              child: SvgPicture.asset(
+                bg,
+                fit: BoxFit.fill,
               ),
-              Padding(
+            ),
+            SingleChildScrollView(
+              child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: s.wHelper(6),
                 ),
@@ -234,11 +235,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: MediaQuery.of(context).viewInsets.bottom,
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
