@@ -157,7 +157,8 @@ class _FormsState extends State<Forms> {
                                         errorBorder: OutlineInputBorder(
                                           gapPadding: 1,
                                           borderRadius: BorderRadius.all(
-                                              Radius.circular(12)),
+                                            Radius.circular(12),
+                                          ),
                                           borderSide: BorderSide(
                                             color: t.errorColor,
                                             width: 1,
@@ -293,7 +294,7 @@ class _FormsState extends State<Forms> {
                                 }
                               },
                               child: Container(
-                                height: s.hHelper(8),
+                                height: s.hHelper(6),
                                 width: s.wHelper(40),
                                 decoration: BoxDecoration(
                                   color: t.activeColor,
