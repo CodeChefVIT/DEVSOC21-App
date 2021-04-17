@@ -186,39 +186,25 @@ class _OTPScreenState extends State<OTPScreen> {
                               ),
                             ],
                           ),
-                          Container(
-                            width: double.infinity,
-                            child: SvgPicture.asset(
-                              devsoc,
-                              height: s.hHelper(18),
-                            ),
-                          ),
-                          SizedBox(
-                            height: s.hHelper(2),
-                          ),
-                          Center(
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'DEVSOC',
-                                style: t.devsocTitle,
-                                children: <TextSpan>[
-                                  TextSpan(
-                                    text: '\'21',
-                                    style: t.devsocTitleColor,
-                                  ),
-                                ],
+                          Hero(
+                            tag: "devsoc",
+                            child: Container(
+                              width: double.infinity,
+                              child: SvgPicture.asset(
+                                devsoc,
+                                height: s.hHelper(8),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: s.hHelper(4),
+                            height: s.hHelper(2),
                           ),
                           Text(
                             "Enter OTP",
                             style: t.heading,
                           ),
                           SizedBox(
-                            height: s.hHelper(2),
+                            height: s.hHelper(1),
                           ),
                           Text(
                             "Enter the 6 character OTP you recieved in your mail.",
@@ -228,7 +214,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: s.hHelper(6),
+                      height: s.hHelper(4),
                     ),
                     PinCodeTextField(
                       inputFormatters: [UpperCaseTextFormatter()],
@@ -272,7 +258,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       },
                     ),
                     SizedBox(
-                      height: s.hHelper(10),
+                      height: s.hHelper(8),
                     ),
                     TextButton(
                       onPressed: () {

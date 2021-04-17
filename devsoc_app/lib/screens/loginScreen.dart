@@ -83,11 +83,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: s.hHelper(12),
                     ),
-                    Container(
-                      width: double.infinity,
-                      child: SvgPicture.asset(
-                        devsoc,
-                        height: s.hHelper(18),
+                    Hero(
+                      tag: "devsoc",
+                      child: Container(
+                        width: double.infinity,
+                        child: SvgPicture.asset(
+                          devsoc,
+                          height: s.hHelper(18),
+                        ),
                       ),
                     ),
                     SizedBox(
