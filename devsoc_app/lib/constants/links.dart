@@ -5,8 +5,8 @@ String devsocLink = "https://hackwith.codechefvit.com";
 String githubLink = "https://github.com/CodeChefVIT";
 String filterLink1 = "https://www.instagram.com/ar/1095443927619209";
 
-// String rootURL = "https://devsoc-api.codechefvit.com/";
-String rootURL = "https://devsoc-test.herokuapp.com/";
+String rootURL = "https://devsoc-api-2.codechefvit.com/";
+// String rootURL = "https://devsoc-test.herokuapp.com/";
 
 String timelineRoute = rootURL + "appdata";
 String loginRoute = rootURL + "app/getOTP";

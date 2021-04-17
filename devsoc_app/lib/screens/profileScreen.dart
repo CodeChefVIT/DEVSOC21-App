@@ -62,6 +62,7 @@ class _ProfileState extends State<Profile> {
   void _launchURL(String _url) async => await canLaunch(_url)
       ? await launch(_url)
       : showErrorToast("Could not launch URL", context);
+
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
