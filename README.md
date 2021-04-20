@@ -4,7 +4,7 @@
 # DEVSOC'21 App
 
 > <Subtitle>
-> Include project description here.
+> This is an app for DEVSOC'21
 
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE) 

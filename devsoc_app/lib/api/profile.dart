@@ -29,6 +29,7 @@ class ProfileGet extends GetxController {
     } else {
       profileLoader.value = true;
       var res = json.decode(prefs.getString("profile"));
+      print(res);
       profileLoader.value = false;
       return res;
     }
