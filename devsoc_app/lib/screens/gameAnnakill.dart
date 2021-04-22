@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +14,9 @@ class Annakill extends StatefulWidget {
 class _AnnakillState extends State<Annakill> {
   final ThemeHelper t = ThemeHelper();
   void initState() {
+    if (Platform.isAndroid) {
+      WebView.platform = SurfaceAndroidWebView();
+    }
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
     ]);
@@ -32,11 +37,12 @@ class _AnnakillState extends State<Annakill> {
       ),
       alignment: Alignment.center,
       child: Container(
-        width: s.wHelper(50),
+        width: s.wHelper(60),
         height: s.hHelper(65),
         child: WebView(
           javascriptMode: JavascriptMode.unrestricted,
-          initialUrl: 'https://ishan-001.github.io/DEVSOC-game/',
+          initialUrl:
+              'https://gamepipe.io/iframe/@ishan-khandelwalvuie/devsoc-',
         ),
       ),
     );

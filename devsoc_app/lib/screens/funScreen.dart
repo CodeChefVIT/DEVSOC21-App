@@ -1,4 +1,5 @@
 import 'package:devsoc_app/constants/links.dart';
+import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/gameAnnakill.dart';
@@ -83,9 +84,23 @@ class _FunState extends State<Fun> {
                         width: double.infinity,
                         child: Row(
                           children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                right: s.wHelper(4),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  devtris,
+                                  height: s.wHelper(15),
+                                  width: s.wHelper(15),
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
                             Text(
                               '''Play\nDevTris''',
-                              style: t.subheading,
+                              style: t.gameTitle,
                             ),
                             Spacer(),
                             Icon(
@@ -121,9 +136,23 @@ class _FunState extends State<Fun> {
                         width: double.infinity,
                         child: Row(
                           children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                right: s.wHelper(4),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  anna,
+                                  height: s.wHelper(15),
+                                  width: s.wHelper(15),
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
                             Text(
                               '''Play\nAnna Kill''',
-                              style: t.subheading,
+                              style: t.gameTitle,
                             ),
                             Spacer(),
                             Icon(
@@ -191,7 +220,7 @@ class _FunState extends State<Fun> {
                         height: s.hHelper(8),
                       )
                     : SizedBox(
-                        height: s.hHelper(2),
+                        height: s.hHelper(8),
                       ),
                 Row(
                   children: [

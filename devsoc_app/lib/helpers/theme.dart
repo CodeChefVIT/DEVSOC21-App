@@ -97,4 +97,11 @@ class ThemeHelper {
     fontWeight: FontWeight.w500,
     color: Color(0xff636363),
   );
+
+  TextStyle gameTitle = GoogleFonts.montserrat(
+    color: Color(0xffe8ecff),
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 1,
+  );
 }
