@@ -18,6 +18,7 @@ class FormGet extends GetxController {
       );
       var res = json.decode(response.body);
       formLoader.value = false;
+      res["statusCode"] = response.statusCode.toString();
       return res;
     } catch (e) {
       return {"message": "error"};

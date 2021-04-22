@@ -89,243 +89,269 @@ class _FormsState extends State<Forms> {
               )
             : Stack(
                 children: [
-                  SingleChildScrollView(
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: s.hHelper(15),
+                  res["statusCode"] == "407"
+                      ? Center(
+                          child: Text(
+                            "No forms active currently",
+                            style: t.smallTextGrey,
                           ),
-                          Text(
-                            form["title"],
-                            style: t.subheading,
-                          ),
-                          SizedBox(
-                            height: s.hHelper(2),
-                          ),
-                          for (var question in form["questions"])
-                            question["type"] == "textfield"
-                                ? Container(
-                                    alignment: Alignment.center,
-                                    margin:
-                                        EdgeInsets.only(bottom: s.hHelper(2)),
-                                    child: TextFormField(
-                                      style: t.smallText,
-                                      cursorColor: t.activeColor,
-                                      onChanged: (value) {
-                                        question["value"] = value;
-                                      },
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Please enter some text';
-                                        }
-                                        return null;
-                                      },
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: s.wHelper(5)),
-                                        border: OutlineInputBorder(
-                                          gapPadding: 1,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(12),
-                                          ),
-                                          borderSide: BorderSide(
-                                            color: t.activeColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          gapPadding: 1,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(12)),
-                                          borderSide: BorderSide(
-                                            color: t.activeColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          gapPadding: 1,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(12)),
-                                          borderSide: BorderSide(
-                                            color: t.activeColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          gapPadding: 1,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(12),
-                                          ),
-                                          borderSide: BorderSide(
-                                            color: t.errorColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        disabledBorder: OutlineInputBorder(
-                                          gapPadding: 1,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(12)),
-                                          borderSide: BorderSide(
-                                            color: t.activeColor,
-                                            width: 1,
-                                          ),
-                                        ),
-                                        hintText: question["question"],
-                                        hintStyle: t.smallTextColor,
-                                      ),
-                                    ),
-                                  )
-                                : question["type"] == "dropdown"
-                                    ? Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            question["question"],
+                        )
+                      : SingleChildScrollView(
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: s.hHelper(15),
+                                ),
+                                Text(
+                                  form["title"],
+                                  style: t.subheading,
+                                ),
+                                SizedBox(
+                                  height: s.hHelper(2),
+                                ),
+                                for (var question in form["questions"])
+                                  question["type"] == "textfield"
+                                      ? Container(
+                                          alignment: Alignment.center,
+                                          margin: EdgeInsets.only(
+                                              bottom: s.hHelper(2)),
+                                          child: TextFormField(
                                             style: t.smallText,
-                                          ),
-                                          SizedBox(
-                                            height: s.hHelper(1),
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                  color: t.activeColor),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(12)),
-                                            ),
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: s.wHelper(5)),
-                                            alignment: Alignment.centerLeft,
-                                            margin: EdgeInsets.only(
-                                                bottom: s.hHelper(2)),
-                                            child: DropdownButton(
-                                              items: question["dropdownOptions"]
-                                                  .map<DropdownMenuItem>(
-                                                      (value) {
-                                                return new DropdownMenuItem(
-                                                  value: value,
-                                                  child: Container(
-                                                    width: s.wHelper(70),
-                                                    child: new Text(
-                                                      value,
-                                                      style: t.smallTextColor,
-                                                    ),
-                                                  ),
-                                                );
-                                              }).toList(),
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  question["value"] = value;
-                                                });
-                                              },
-                                              underline: Container(),
-                                              value: question["value"] ??
-                                                  question["dropdownOptions"]
-                                                      [0],
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    : question["type"] == "checkbox"
-                                        ? Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                question["question"],
-                                                style: t.smallText,
+                                            cursorColor: t.activeColor,
+                                            onChanged: (value) {
+                                              question["value"] = value;
+                                            },
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'Please enter some text';
+                                              }
+                                              return null;
+                                            },
+                                            decoration: InputDecoration(
+                                              contentPadding:
+                                                  EdgeInsets.symmetric(
+                                                      horizontal: s.wHelper(5)),
+                                              border: OutlineInputBorder(
+                                                gapPadding: 1,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(12),
+                                                ),
+                                                borderSide: BorderSide(
+                                                  color: t.activeColor,
+                                                  width: 1,
+                                                ),
                                               ),
-                                              SizedBox(
-                                                height: s.hHelper(1),
+                                              focusedBorder: OutlineInputBorder(
+                                                gapPadding: 1,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(12)),
+                                                borderSide: BorderSide(
+                                                  color: t.activeColor,
+                                                  width: 1,
+                                                ),
                                               ),
-                                              for (var i in question[
-                                                  "checkboxOptions"])
+                                              enabledBorder: OutlineInputBorder(
+                                                gapPadding: 1,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(12)),
+                                                borderSide: BorderSide(
+                                                  color: t.activeColor,
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                gapPadding: 1,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(12),
+                                                ),
+                                                borderSide: BorderSide(
+                                                  color: t.errorColor,
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              disabledBorder:
+                                                  OutlineInputBorder(
+                                                gapPadding: 1,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(12)),
+                                                borderSide: BorderSide(
+                                                  color: t.activeColor,
+                                                  width: 1,
+                                                ),
+                                              ),
+                                              hintText: question["question"],
+                                              hintStyle: t.smallTextColor,
+                                            ),
+                                          ),
+                                        )
+                                      : question["type"] == "dropdown"
+                                          ? Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  question["question"],
+                                                  style: t.smallText,
+                                                ),
+                                                SizedBox(
+                                                  height: s.hHelper(1),
+                                                ),
                                                 Container(
                                                   decoration: BoxDecoration(
                                                     border: Border.all(
-                                                      color: t.activeColor,
-                                                      width: 1,
-                                                    ),
+                                                        color: t.activeColor),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            15),
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                12)),
                                                   ),
-                                                  margin: EdgeInsets.symmetric(
-                                                    vertical: s.hHelper(0.8),
-                                                  ),
-                                                  child: CheckboxListTile(
-                                                    title: Text(
-                                                      i,
-                                                      style: t.smallTextColor,
-                                                    ),
-                                                    checkColor: t.altBgColor,
-                                                    activeColor: t.activeColor,
-                                                    value: checkBoxMap[i],
-                                                    onChanged: (newValue) {
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: s.wHelper(5)),
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  margin: EdgeInsets.only(
+                                                      bottom: s.hHelper(2)),
+                                                  child: DropdownButton(
+                                                    items: question[
+                                                            "dropdownOptions"]
+                                                        .map<DropdownMenuItem>(
+                                                            (value) {
+                                                      return new DropdownMenuItem(
+                                                        value: value,
+                                                        child: Container(
+                                                          width: s.wHelper(70),
+                                                          child: new Text(
+                                                            value,
+                                                            style: t
+                                                                .smallTextColor,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }).toList(),
+                                                    onChanged: (value) {
                                                       setState(() {
-                                                        checkBoxMap[i] =
-                                                            newValue;
-                                                        print(checkBoxMap);
+                                                        question["value"] =
+                                                            value;
                                                       });
                                                     },
-                                                    controlAffinity:
-                                                        ListTileControlAffinity
-                                                            .leading, //  <-- leading Checkbox
+                                                    underline: Container(),
+                                                    value: question["value"] ??
+                                                        question[
+                                                            "dropdownOptions"][0],
                                                   ),
+                                                ),
+                                              ],
+                                            )
+                                          : question["type"] == "checkbox"
+                                              ? Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      question["question"],
+                                                      style: t.smallText,
+                                                    ),
+                                                    SizedBox(
+                                                      height: s.hHelper(1),
+                                                    ),
+                                                    for (var i in question[
+                                                        "checkboxOptions"])
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                            color:
+                                                                t.activeColor,
+                                                            width: 1,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(15),
+                                                        ),
+                                                        margin: EdgeInsets
+                                                            .symmetric(
+                                                          vertical:
+                                                              s.hHelper(0.8),
+                                                        ),
+                                                        child: CheckboxListTile(
+                                                          title: Text(
+                                                            i,
+                                                            style: t
+                                                                .smallTextColor,
+                                                          ),
+                                                          checkColor:
+                                                              t.altBgColor,
+                                                          activeColor:
+                                                              t.activeColor,
+                                                          value: checkBoxMap[i],
+                                                          onChanged:
+                                                              (newValue) {
+                                                            setState(() {
+                                                              checkBoxMap[i] =
+                                                                  newValue;
+                                                              print(
+                                                                  checkBoxMap);
+                                                            });
+                                                          },
+                                                          controlAffinity:
+                                                              ListTileControlAffinity
+                                                                  .leading, //  <-- leading Checkbox
+                                                        ),
+                                                      )
+                                                  ],
                                                 )
-                                            ],
-                                          )
-                                        : Container(),
-                          SizedBox(
-                            height: s.hHelper(2),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            alignment: Alignment.center,
-                            child: TextButton(
-                              onPressed: () {
-                                if (!_isButtonDisabled) {
-                                  HapticFeedback.lightImpact();
-                                  _submit();
-                                }
-                              },
-                              child: Container(
-                                height: s.hHelper(6),
-                                width: s.wHelper(40),
-                                decoration: BoxDecoration(
-                                  color: t.activeColor,
-                                  borderRadius: BorderRadius.circular(15),
+                                              : Container(),
+                                SizedBox(
+                                  height: s.hHelper(2),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      CupertinoIcons.checkmark_alt,
-                                      color: t.white,
+                                Container(
+                                  width: double.infinity,
+                                  alignment: Alignment.center,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      if (!_isButtonDisabled) {
+                                        HapticFeedback.lightImpact();
+                                        _submit();
+                                      }
+                                    },
+                                    child: Container(
+                                      height: s.hHelper(6),
+                                      width: s.wHelper(40),
+                                      decoration: BoxDecoration(
+                                        color: t.activeColor,
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            CupertinoIcons.checkmark_alt,
+                                            color: t.white,
+                                          ),
+                                          SizedBox(
+                                            width: s.wHelper(2),
+                                          ),
+                                          Text(
+                                            "Submit",
+                                            style: t.smallTextBold,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    SizedBox(
-                                      width: s.wHelper(2),
-                                    ),
-                                    Text(
-                                      "Submit",
-                                      style: t.smallTextBold,
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
+                                SizedBox(
+                                  height: s.hHelper(2),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(
-                            height: s.hHelper(2),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                        ),
                   Container(
                     color: t.bgColor,
                     width: double.infinity,

@@ -49,164 +49,166 @@ class _FunState extends State<Fun> {
                     annakill ? Annakill() : Container()
                   ],
                 )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: s.hHelper(15),
-                    ),
-                    Text(
-                      "Games",
-                      style: t.subheading,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          devTris = true;
-                          home = false;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: s.hHelper(15),
+                      ),
+                      Text(
+                        "Games",
+                        style: t.subheading,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            devTris = true;
+                            home = false;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            color: t.activeColor,
                           ),
-                          color: t.activeColor,
-                        ),
-                        margin: EdgeInsets.symmetric(
-                          vertical: s.hHelper(1),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: s.wHelper(4),
-                        ),
-                        alignment: Alignment.centerLeft,
-                        height: s.hHelper(10),
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                right: s.wHelper(4),
+                          margin: EdgeInsets.symmetric(
+                            vertical: s.hHelper(1),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: s.wHelper(4),
+                          ),
+                          alignment: Alignment.centerLeft,
+                          height: s.hHelper(10),
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: s.wHelper(4),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    devtris,
+                                    height: s.wHelper(15),
+                                    width: s.wHelper(15),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  devtris,
-                                  height: s.wHelper(15),
-                                  width: s.wHelper(15),
-                                  fit: BoxFit.fill,
+                              Text(
+                                '''Play\nDevTris''',
+                                style: t.gameTitle,
+                              ),
+                              Spacer(),
+                              Icon(
+                                CupertinoIcons.chevron_right,
+                                color: t.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            annakill = true;
+                            home = false;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            color: t.activeColor,
+                          ),
+                          margin: EdgeInsets.symmetric(
+                            vertical: s.hHelper(1),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: s.wHelper(4),
+                          ),
+                          alignment: Alignment.centerLeft,
+                          height: s.hHelper(10),
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  right: s.wHelper(4),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    anna,
+                                    height: s.wHelper(15),
+                                    width: s.wHelper(15),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                '''Play\nAnna Dodge''',
+                                style: t.gameTitle,
+                              ),
+                              Spacer(),
+                              Icon(
+                                CupertinoIcons.chevron_right,
+                                color: t.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: s.hHelper(2),
+                      ),
+                      Text(
+                        "Filters",
+                        style: t.subheading,
+                      ),
+                      SizedBox(
+                        height: s.hHelper(2),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              launch(filterLink1);
+                            },
+                            child: Container(
+                              height: s.wHelper(40),
+                              width: s.wHelper(40),
+                              decoration: BoxDecoration(
+                                color: t.activeColor,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Offline DEVSOC Vibes",
+                                  style: t.smallTextBold,
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                             ),
-                            Text(
-                              '''Play\nDevTris''',
-                              style: t.gameTitle,
-                            ),
-                            Spacer(),
-                            Icon(
-                              CupertinoIcons.chevron_right,
-                              color: t.white,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          annakill = true;
-                          home = false;
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
                           ),
-                          color: t.activeColor,
-                        ),
-                        margin: EdgeInsets.symmetric(
-                          vertical: s.hHelper(1),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: s.wHelper(4),
-                        ),
-                        alignment: Alignment.centerLeft,
-                        height: s.hHelper(10),
-                        width: double.infinity,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                right: s.wHelper(4),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  anna,
-                                  height: s.wHelper(15),
-                                  width: s.wHelper(15),
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              '''Play\nAnna Kill''',
-                              style: t.gameTitle,
-                            ),
-                            Spacer(),
-                            Icon(
-                              CupertinoIcons.chevron_right,
-                              color: t.white,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: s.hHelper(2),
-                    ),
-                    Text(
-                      "Filters",
-                      style: t.subheading,
-                    ),
-                    SizedBox(
-                      height: s.hHelper(2),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            launch(filterLink1);
-                          },
-                          child: Container(
+                          Container(
                             height: s.wHelper(40),
                             width: s.wHelper(40),
                             decoration: BoxDecoration(
                               color: t.activeColor,
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Center(
-                              child: Text(
-                                "Offline DEVSOC Vibes",
-                                style: t.smallTextBold,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
                           ),
-                        ),
-                        Container(
-                          height: s.wHelper(40),
-                          width: s.wHelper(40),
-                          decoration: BoxDecoration(
-                            color: t.activeColor,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
           Container(
             color: t.bgColor,
