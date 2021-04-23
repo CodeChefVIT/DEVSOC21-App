@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:devsoc_app/constants/links.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
@@ -114,10 +116,16 @@ class _FunState extends State<Fun> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          setState(() {
-                            annakill = true;
-                            home = false;
-                          });
+                          if (Platform.isAndroid) {
+                            launch(
+                              "https://gamepipe.io/iframe/@ishan-khandelwalvuie/devsoc-",
+                            );
+                          } else {
+                            setState(() {
+                              annakill = true;
+                              home = false;
+                            });
+                          }
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -197,12 +205,24 @@ class _FunState extends State<Fun> {
                               ),
                             ),
                           ),
-                          Container(
-                            height: s.wHelper(40),
-                            width: s.wHelper(40),
-                            decoration: BoxDecoration(
-                              color: t.activeColor,
-                              borderRadius: BorderRadius.circular(20),
+                          GestureDetector(
+                            onTap: () {
+                              launch(filterLink2);
+                            },
+                            child: Container(
+                              height: s.wHelper(40),
+                              width: s.wHelper(40),
+                              decoration: BoxDecoration(
+                                color: t.activeColor,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Sec",
+                                  style: t.smallTextBold,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
                           ),
                         ],

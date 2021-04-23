@@ -1,4 +1,5 @@
 import 'package:devsoc_app/api/auth.dart';
+import 'package:devsoc_app/constants/links.dart';
 import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -245,6 +247,46 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ],
                                 ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: s.hHelper(4),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Haven't registered yet?",
+                        style: t.smallTextBold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: s.hHelper(2),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      alignment: Alignment.center,
+                      child: TextButton(
+                        onPressed: () {
+                          launch(devsocLink);
+                        },
+                        child: Container(
+                          height: s.hHelper(6),
+                          width: s.wHelper(50),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: t.bgColor,
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: t.secondaryBgColor,
+                              width: 2,
+                            ),
+                          ),
+                          child: Text(
+                            "Register now!",
+                            style: t.smallTextBold,
+                          ),
                         ),
                       ),
                     ),
