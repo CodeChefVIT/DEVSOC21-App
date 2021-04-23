@@ -218,7 +218,7 @@ class _FunState extends State<Fun> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "Sec",
+                                  "DEVSOC Hologram",
                                   style: t.smallTextBold,
                                   textAlign: TextAlign.center,
                                 ),
