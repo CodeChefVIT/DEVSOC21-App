@@ -3,6 +3,7 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/landingScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class FormSubmitted extends StatefulWidget {
@@ -13,6 +14,7 @@ class FormSubmitted extends StatefulWidget {
 class _FormSubmittedState extends State<FormSubmitted> {
   final ThemeHelper t = ThemeHelper();
   void initState() {
+    HapticFeedback.heavyImpact();
     new Future.delayed(const Duration(seconds: 2), () {
       Get.to(() => LandingScreen());
     });
