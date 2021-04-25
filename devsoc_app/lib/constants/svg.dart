@@ -5,5 +5,6 @@ String github = "assets/svg/github.svg";
 String linkedin = "assets/svg/linkedin.svg";
 String devsoc = "assets/svg/devsoc.svg";
 String bg = "assets/svg/bg.svg";
+String noform = "assets/svg/noform.svg";
 String anna = "assets/icon/anna.jpg";
 String devtris = "assets/icon/devtris.jpg";

@@ -1,4 +1,5 @@
 import 'package:devsoc_app/api/forms.dart';
+import 'package:devsoc_app/constants/svg.dart';
 import 'package:devsoc_app/helpers/size.dart';
 import 'package:devsoc_app/helpers/theme.dart';
 import 'package:devsoc_app/screens/formSubmitted.dart';
@@ -7,6 +8,7 @@ import 'package:devsoc_app/utils/loader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class Forms extends StatefulWidget {
@@ -38,14 +40,16 @@ class _FormsState extends State<Forms> {
   getData() async {
     res = await f.getForm();
     form = res["form"];
-    for (var questions in form["questions"]) {
-      if (questions["type"] == "checkbox") {
-        for (var i in questions["checkboxOptions"]) {
-          checkBoxMap[i] = false;
+    if (res["statusCode"] != "407") {
+      for (var questions in form["questions"]) {
+        if (questions["type"] == "checkbox") {
+          for (var i in questions["checkboxOptions"]) {
+            checkBoxMap[i] = false;
+          }
         }
-      }
-      if (questions["type"] == "dropdown") {
-        questions["value"] = questions["dropdownOptions"][0];
+        if (questions["type"] == "dropdown") {
+          questions["value"] = questions["dropdownOptions"][0];
+        }
       }
     }
   }
@@ -91,9 +95,21 @@ class _FormsState extends State<Forms> {
                 children: [
                   res["statusCode"] == "407"
                       ? Center(
-                          child: Text(
-                            "No forms active currently",
-                            style: t.smallTextGrey,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                noform,
+                                height: s.hHelper(20),
+                              ),
+                              SizedBox(
+                                height: s.hHelper(4),
+                              ),
+                              Text(
+                                "No forms active currently",
+                                style: t.smallTextGrey,
+                              ),
+                            ],
                           ),
                         )
                       : SingleChildScrollView(

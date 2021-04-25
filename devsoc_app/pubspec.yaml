@@ -72,6 +72,7 @@ flutter:
     - assets/svg/discord.svg
     - assets/svg/yt.svg
     - assets/svg/cc.svg
+    - assets/svg/noform.svg
     - assets/svg/github.svg
     - assets/svg/linkedin.svg
     - assets/svg/devsoc.svg
