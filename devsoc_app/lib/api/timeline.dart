@@ -52,7 +52,15 @@ class TimelineChecker extends GetxController {
     } else {
       loader.value = true;
       timeline = json.decode(prefs.getString("timeline"));
-      current.value = timeline["today"];
+      if (DateTime.now().day == 30) {
+        current.value = 1;
+      } else if (DateTime.now().day == 1) {
+        current.value = 2;
+      } else if (DateTime.now().day == 2) {
+        current.value = 3;
+      } else {
+        current.value = timeline["today"];
+      }
       loader.value = false;
     }
   }

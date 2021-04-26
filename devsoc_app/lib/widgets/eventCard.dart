@@ -3,6 +3,7 @@ import 'package:devsoc_app/helpers/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EventCard extends StatelessWidget {
   final double duration;
@@ -71,7 +72,11 @@ class EventCard extends StatelessWidget {
               ),
               child: Text(
                 title,
-                style: t.smallTextBold,
+                style: GoogleFonts.montserrat(
+                  fontSize: s.hHelper(1.5),
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffe8ecff),
+                ),
               ),
             ),
           ],
