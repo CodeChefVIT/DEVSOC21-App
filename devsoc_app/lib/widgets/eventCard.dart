@@ -25,7 +25,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);
     return Positioned(
-      top: ((s.hHelper(4) + 20) * time) + s.hHelper(15),
+      top: ((s.hHelper(4) + 20) * time) + s.hHelper(15.2),
       child: GestureDetector(
         onTap: () async {
           if (details != null) {
@@ -44,7 +44,7 @@ class EventCard extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: s.wHelper(18),
               ),
-              height: (s.hHelper(4) + 20) * duration,
+              height: (s.hHelper(4) + 20) * duration - s.hHelper(0.2),
               width: s.wHelper(70),
             ),
             Container(
@@ -57,14 +57,14 @@ class EventCard extends StatelessWidget {
               margin: EdgeInsets.only(
                 left: s.wHelper(18),
               ),
-              height: (s.hHelper(4) + 20) * duration,
+              height: (s.hHelper(4) + 20) * duration - s.hHelper(0.2),
               width: s.wHelper(70) * percent / 100,
             ),
             Container(
               margin: EdgeInsets.only(
                 left: s.wHelper(18),
               ),
-              height: (s.hHelper(4) + 20) * duration,
+              height: (s.hHelper(4) + 20) * duration - s.hHelper(0.2),
               width: s.wHelper(70),
               padding: EdgeInsets.symmetric(
                 horizontal: s.wHelper(2),
