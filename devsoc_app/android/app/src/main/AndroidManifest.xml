@@ -22,15 +22,17 @@
               android:resource="@style/NormalTheme"
               />
 
+            <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+
             <meta-data
               android:name="com.google.firebase.messaging.default_notification_icon"
               android:resource="@drawable/notif_icon" />
 
-            <!-- Displays an Android View that continues showing the launch screen
-                 Drawable until Flutter paints its first frame, then this splash
-                 screen fades out. A splash screen is useful to avoid any visual
-                 gap between the end of Android's launch screen and the painting of
-                 Flutter's first frame. -->
+            <meta-data
+              android:name="com.google.firebase.messaging.default_notification_color"
+              android:resource="@color/colorPrimary" />
+
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
