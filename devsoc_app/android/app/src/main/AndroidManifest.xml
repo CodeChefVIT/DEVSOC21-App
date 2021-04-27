@@ -6,6 +6,12 @@
     <application
         android:label="DEVSOC'21"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notif_icon" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -24,14 +30,6 @@
 
             <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more. -->
-
-            <meta-data
-              android:name="com.google.firebase.messaging.default_notification_icon"
-              android:resource="@drawable/notif_icon" />
-
-            <meta-data
-              android:name="com.google.firebase.messaging.default_notification_color"
-              android:resource="@color/colorPrimary" />
 
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
