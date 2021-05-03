@@ -19,7 +19,11 @@
 - Fun games and filters
 
 ## Screenshots
-<img src="https://github.com/akshatvg/common-entry-test/raw/master/static/img/header.png" alt="Project Screenshots">
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1524.PNG" alt="Project Screenshots">
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1525.PNG" alt="Project Screenshots">
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1526.PNG" alt="Project Screenshots">
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1527.PNG" alt="Project Screenshots">
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1528.PNG" alt="Project Screenshots">
 
 ## Instructions to run
 ```
