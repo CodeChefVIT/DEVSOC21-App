@@ -4,7 +4,7 @@
 # DEVSOC'21 App
 
 > <Subtitle>
-> This is an app for DEVSOC'21
+> The offical app for DEVSOC'21
 
 ---
 [![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE) 
@@ -18,15 +18,30 @@
 
 ## Instructions to run
 ```
-$ git clone https://github.com/CodeChefVIT/<Project>
-$ cd <Project>
-$ pip3 install -r requirements.txt
-$ python3 manage.py runserver
+$ git clone
+$ 
+$ git clone
 ```
 
 ## Contributors
-- <a href="https://github.com/<Contributor>">Contributor Name</a>
-- <a href="https://github.com/<Contributor>">Contributor Name</a>
+<table>
+<tr align="center">
+
+
+<td>
+
+Siddharth Singh
+
+<p align="center">
+<img src = "https://avatars.githubusercontent.com/u/59444018?v=4" width="150" height="150" alt="Amogh Lele">
+</p>
+<p align="center">
+<a href = "https://github.com/44t4nk1"><img src = "http://www.iconninja.com/files/241/825/211/round-collaboration-social-github-code-circle-network-icon.svg" width="36" height = "36" alt="GitHub"/></a>
+<a href = "https://www.linkedin.com/in/44t4nk1/">
+<img src = "http://www.iconninja.com/files/863/607/751/network-linkedin-social-connection-circular-circle-media-icon.svg" width="36" height="36" alt="LinkedIn"/>
+</a>
+</p>
+</td>
 
 ## License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
