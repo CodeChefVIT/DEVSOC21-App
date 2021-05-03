@@ -12,6 +12,11 @@
 
 ## Features
 - Announcements for DEVSOC
+- Dynamic forms for the hack
+- Profile page for the status
+- Dashboard with announcements and links
+- Dynamic timeline
+- Fun games and filters
 
 ## Screenshots
 <img src="https://github.com/akshatvg/common-entry-test/raw/master/static/img/header.png" alt="Project Screenshots">
@@ -19,17 +24,20 @@
 ## Instructions to run
 ```
 $ git clone
-$ 
-$ git clone
+$ cd into the project
+
+  Connect a device
+
+$ flutter run
 ```
+
+You can also download the app from both the App and the Play Stores
+
 
 ## Contributors
 <table>
 <tr align="center">
-
-
 <td>
-
 Siddharth Singh
 
 <p align="center">
@@ -42,6 +50,7 @@ Siddharth Singh
 </a>
 </p>
 </td>
+</table>
 
 ## License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
