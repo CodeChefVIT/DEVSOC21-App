@@ -20,11 +20,11 @@
 
 ## Screenshots
 <p align="center">
-<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1524.PNG" alt="Project Screenshots" height="609" >
-<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1525.PNG" alt="Project Screenshots" height="609" >
-<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1526.PNG" alt="Project Screenshots" height="609" >
-<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1527.PNG" alt="Project Screenshots" height="609" >
-<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1528.PNG" alt="Project Screenshots" height="609" >
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1524.PNG" alt="Project Screenshots" height="400" >
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1525.PNG" alt="Project Screenshots" height="400" >
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1526.PNG" alt="Project Screenshots" height="400" >
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1527.PNG" alt="Project Screenshots" height="400" >
+<img src="https://github.com/CodeChefVIT/DEVSOC21-App/blob/master/screenshots/IMG_1528.PNG" alt="Project Screenshots" height="400" >
 </p>
 
 ## Instructions to run
