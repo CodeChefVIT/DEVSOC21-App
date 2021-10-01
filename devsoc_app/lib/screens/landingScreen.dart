@@ -24,7 +24,7 @@ class _LandingScreenState extends State<LandingScreen> {
 
   ThemeHelper t = ThemeHelper();
   int currentIndex;
-  _LandingScreenState({@required this.currentIndex});
+  _LandingScreenState({required this.currentIndex});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

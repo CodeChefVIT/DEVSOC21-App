@@ -50,9 +50,9 @@ class _TimelineState extends State<Timeline> {
     tl.checkTimeOne();
   }
 
-  bool one;
-  bool two;
-  bool three;
+  late bool one;
+  late bool two;
+  late bool three;
   @override
   Widget build(BuildContext context) {
     SizeHelper s = SizeHelper(context);

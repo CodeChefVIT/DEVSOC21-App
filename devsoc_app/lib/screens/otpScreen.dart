@@ -14,23 +14,23 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OTPScreen extends StatefulWidget {
   final String email;
-  OTPScreen({@required this.email});
+  OTPScreen({required this.email});
   @override
   _OTPScreenState createState() => _OTPScreenState();
 }
 
 class _OTPScreenState extends State<OTPScreen> {
-  String currentText;
+  String? currentText;
   TextEditingController textEditingController = TextEditingController();
   ThemeHelper t = ThemeHelper();
   final Auth a = Auth();
   _submit() async {
     FirebaseMessaging messaging = FirebaseMessaging.instance;
-    String fcmToken;
+    String? fcmToken;
     await messaging.getToken().then((value) {
       fcmToken = value;
     });
-    Map<String, String> body = {
+    Map<String, String?> body = {
       "otp": currentText.toString().toLowerCase(),
       "email": widget.email,
       "fcmToken": fcmToken,
@@ -94,8 +94,8 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
             ],
           ),
-        ) ??
-        false;
+        ).then((value) => value as bool) ??
+        false as Future<bool>;
   }
 
   _resendOTP() async {
@@ -105,7 +105,7 @@ class _OTPScreenState extends State<OTPScreen> {
     });
     _isButtonDisabled = true;
     Map<String, String> body = {"email": widget.email};
-    var map = await a.login(body);
+    var map = await (a.login(body) as Future<Map<dynamic, dynamic>>);
     if (map["success"] == true) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -320,7 +320,7 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   TextEditingValue formatEditUpdate(
       TextEditingValue oldValue, TextEditingValue newValue) {
     return TextEditingValue(
-      text: newValue.text?.toUpperCase(),
+      text: newValue.text.toUpperCase(),
       selection: newValue.selection,
     );
   }

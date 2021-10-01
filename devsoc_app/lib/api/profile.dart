@@ -9,14 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ProfileGet extends GetxController {
   RxBool profileLoader = true.obs;
 
-  Future<Map> getProfile(String token) async {
+  Future<Map?> getProfile(String? token) async {
     final prefs = await SharedPreferences.getInstance();
 
     if (!prefs.containsKey("profile")) {
       var url = Uri.parse(profileRoute);
       try {
         var response = await http.get(url, headers: {
-          HttpHeaders.authorizationHeader: token,
+          HttpHeaders.authorizationHeader: token!,
         });
         var res = json.decode(response.body);
         print(res);
@@ -28,14 +28,14 @@ class ProfileGet extends GetxController {
       }
     } else {
       profileLoader.value = true;
-      var res = json.decode(prefs.getString("profile"));
+      var res = json.decode(prefs.getString("profile")!);
       print(res);
       profileLoader.value = false;
       return res;
     }
   }
 
-  Future<Map> refreshProfile(String token) async {
+  Future<Map?> refreshProfile(String token) async {
     final prefs = await SharedPreferences.getInstance();
     var url = Uri.parse(profileRoute);
     try {

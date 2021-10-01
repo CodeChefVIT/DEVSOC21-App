@@ -6,19 +6,19 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EventCard extends StatelessWidget {
-  final double duration;
-  final double time;
-  final double percent;
-  final String title;
-  final String details;
-  final String imgPath;
+  final double? duration;
+  final double? time;
+  final double? percent;
+  final String? title;
+  final String? details;
+  final String? imgPath;
   EventCard({
-    @required this.duration,
-    @required this.time,
+    required this.duration,
+    required this.time,
     this.percent,
-    @required this.title,
-    @required this.details,
-    @required this.imgPath,
+    required this.title,
+    required this.details,
+    required this.imgPath,
   });
   final ThemeHelper t = ThemeHelper();
   @override
@@ -71,7 +71,7 @@ class EventCard extends StatelessWidget {
                 vertical: s.hHelper(1),
               ),
               child: Text(
-                title,
+                title!,
                 style: GoogleFonts.montserrat(
                   fontSize: s.hHelper(1.5),
                   fontWeight: FontWeight.w600,
@@ -86,7 +86,7 @@ class EventCard extends StatelessWidget {
   }
 
   Future<void> showMyDialog(
-      BuildContext context, String message, String imgPath) async {
+      BuildContext context, String? message, String? imgPath) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -102,7 +102,7 @@ class EventCard extends StatelessWidget {
                       )
                     : Container(),
                 Text(
-                  message,
+                  message!,
                   style: t.smallText,
                 ),
               ],

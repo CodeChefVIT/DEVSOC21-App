@@ -29,7 +29,7 @@ class FormGet extends GetxController {
     var prefs = await SharedPreferences.getInstance();
     var url = Uri.parse(submitFormRoute);
     final extractedUserData =
-        json.decode(prefs.getString('userData')) as Map<String, Object>;
+        json.decode(prefs.getString('userData')!) as Map<String, Object>;
     var _token = extractedUserData['token'].toString();
     Map<dynamic, dynamic> send = {};
     send["questions"] = data["questions"];

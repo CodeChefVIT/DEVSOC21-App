@@ -19,9 +19,9 @@ class TimelineChecker extends GetxController {
 
   RxBool loader = true.obs;
 
-  Map<dynamic, dynamic> timeline = {};
+  Map<dynamic, dynamic>? timeline = {};
 
-  List<dynamic> timelineCurrent = [];
+  List<dynamic>? timelineCurrent = [];
 
   void calcPerc(DateTime now, DateTime one, DateTime two) {
     if (now.compareTo(one) == -1) {
@@ -47,11 +47,11 @@ class TimelineChecker extends GetxController {
       loader.value = true;
       await getTimeline();
       prefs.setString("timeline", jsonEncode(timeline));
-      current.value = timeline["today"];
+      current.value = timeline!["today"];
       loader.value = false;
     } else {
       loader.value = true;
-      timeline = json.decode(prefs.getString("timeline"));
+      timeline = json.decode(prefs.getString("timeline")!);
       if (DateTime.now().day == 30) {
         current.value = 1;
       } else if (DateTime.now().day == 1) {
@@ -59,7 +59,7 @@ class TimelineChecker extends GetxController {
       } else if (DateTime.now().day == 2) {
         current.value = 3;
       } else {
-        current.value = timeline["today"];
+        current.value = timeline!["today"];
       }
       loader.value = false;
     }
@@ -70,7 +70,7 @@ class TimelineChecker extends GetxController {
     loader.value = true;
     await getTimeline();
     prefs.setString("timeline", jsonEncode(timeline));
-    current.value = timeline["today"];
+    current.value = timeline!["today"];
     loader.value = false;
   }
 
@@ -79,13 +79,13 @@ class TimelineChecker extends GetxController {
 
     percentNodeOne.clear();
     if (current.value == 1) {
-      timelineCurrent = timeline["day1"];
+      timelineCurrent = timeline!["day1"];
     } else if (current.value == 2) {
-      timelineCurrent = timeline["day2"];
+      timelineCurrent = timeline!["day2"];
     } else if (current.value == 3) {
-      timelineCurrent = timeline["day3"];
+      timelineCurrent = timeline!["day3"];
     }
-    for (var i in timelineCurrent) {
+    for (var i in timelineCurrent!) {
       calcPerc(now, DateTime.parse(i["start"]), DateTime.parse(i["end"]));
     }
   }

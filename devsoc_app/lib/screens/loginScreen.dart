@@ -25,13 +25,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final Auth a = Auth();
   _submit() async {
     FocusScope.of(context).unfocus();
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       _isButtonDisabled = true;
       setState(() {
         loader = true;
       });
       Map<String, String> body = {"email": email.text.toString()};
-      var map = await a.login(body);
+      var map = await (a.login(body) as Future<Map<dynamic, dynamic>>);
       setState(() {
         loader = false;
       });
@@ -49,12 +49,12 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  String validateEmail(String value) {
+  String? validateEmail(String value) {
     Pattern pattern =
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
         r"{0,253}[a-zA-Z0-9])?)*$";
-    RegExp regex = new RegExp(pattern);
+    RegExp regex = new RegExp(pattern as String);
     if (!regex.hasMatch(value) || value == null)
       return 'Enter a valid email address';
     else

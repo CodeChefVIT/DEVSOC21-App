@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class Announcements extends GetxController {
   RxBool announcementsLoader = true.obs;
 
-  Future<Map> getAnnouncements() async {
+  Future<Map?> getAnnouncements() async {
     var url = Uri.parse(announcementRoute);
     try {
       announcementsLoader.value = true;

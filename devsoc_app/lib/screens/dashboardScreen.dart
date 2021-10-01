@@ -22,7 +22,7 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   ThemeHelper t = ThemeHelper();
   Announcements a = Announcements();
-  Map announcementDetails = {};
+  Map? announcementDetails = {};
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   final TimelineChecker tl = TimelineChecker();
@@ -103,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
                               ),
                             ),
                           )
-                        : announcementDetails["announcements"] == null
+                        : announcementDetails!["announcements"] == null
                             ? Container(
                                 height: s.hHelper(15),
                                 decoration: DottedDecoration(
@@ -122,7 +122,7 @@ class _DashboardState extends State<Dashboard> {
                             : Column(
                                 children: [
                                   for (var announcement
-                                      in announcementDetails["announcements"])
+                                      in announcementDetails!["announcements"])
                                     GestureDetector(
                                       onTap: () {
                                         if (announcement["link"] != null) {

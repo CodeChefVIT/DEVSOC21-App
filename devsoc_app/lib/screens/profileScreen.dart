@@ -24,11 +24,11 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   ThemeHelper t = ThemeHelper();
-  String token;
+  String? token;
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   ProfileGet profile = ProfileGet();
-  Map profileDetails = {};
+  Map? profileDetails = {};
   Auth auth = Auth();
   void initState() {
     getData();
@@ -45,17 +45,17 @@ class _ProfileState extends State<Profile> {
   void _onRefresh() async {
     final prefs = await SharedPreferences.getInstance();
     final extractedUserData =
-        json.decode(prefs.getString('userData')) as Map<String, Object>;
-    token = extractedUserData['token'];
-    profileDetails = await profile.refreshProfile(token);
+        json.decode(prefs.getString('userData')!) as Map<String, Object>;
+    token = extractedUserData['token'] as String?;
+    profileDetails = await profile.refreshProfile(token!);
     _refreshController.refreshCompleted();
   }
 
   getData() async {
     final prefs = await SharedPreferences.getInstance();
     final extractedUserData =
-        json.decode(prefs.getString('userData')) as Map<String, Object>;
-    token = extractedUserData['token'];
+        json.decode(prefs.getString('userData')!) as Map<String, Object>;
+    token = extractedUserData['token'] as String?;
     profileDetails = await profile.getProfile(token);
   }
 
@@ -106,7 +106,7 @@ class _ProfileState extends State<Profile> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: Image.network(
-                                profileDetails["user"]["avatar"],
+                                profileDetails!["user"]["avatar"],
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -115,13 +115,13 @@ class _ProfileState extends State<Profile> {
                             height: s.hHelper(2),
                           ),
                           Text(
-                            profileDetails["user"]["name"],
+                            profileDetails!["user"]["name"],
                             style: t.subheading,
                           ),
                           SizedBox(
                             height: s.hHelper(1),
                           ),
-                          profileDetails["user"]["team"] == null
+                          profileDetails!["user"]["team"] == null
                               ? TextButton(
                                   onPressed: () {
                                     launch(devsocLink);
@@ -147,7 +147,7 @@ class _ProfileState extends State<Profile> {
                                     style: t.smallTextBold,
                                     children: <TextSpan>[
                                       TextSpan(
-                                        text: profileDetails["user"]["team"]
+                                        text: profileDetails!["user"]["team"]
                                             ["name"],
                                         style: t.smallText,
                                       ),
@@ -157,12 +157,12 @@ class _ProfileState extends State<Profile> {
                           SizedBox(
                             height: s.hHelper(3),
                           ),
-                          profileDetails["user"]["team"] == null
+                          profileDetails!["user"]["team"] == null
                               ? Text(
                                   "Create a team to submit an Idea",
                                   style: t.smallText,
                                 )
-                              : profileDetails["user"]["team"]["submission"]
+                              : profileDetails!["user"]["team"]["submission"]
                                           ["name"] ==
                                       null
                                   ? TextButton(
@@ -193,7 +193,7 @@ class _ProfileState extends State<Profile> {
                                             style: t.smallTextBold,
                                             children: <TextSpan>[
                                               TextSpan(
-                                                text: profileDetails["user"]
+                                                text: profileDetails!["user"]
                                                             ["team"]
                                                         ["submission"]["name"]
                                                     .toString(),
@@ -210,7 +210,7 @@ class _ProfileState extends State<Profile> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              profileDetails["user"]["team"]
+                                              profileDetails!["user"]["team"]
                                                   ["submission"]["status"],
                                               style: t.smallText,
                                             ),
@@ -218,14 +218,14 @@ class _ProfileState extends State<Profile> {
                                               width: s.wHelper(2),
                                             ),
                                             Icon(
-                                              profileDetails["user"]["team"]
+                                              profileDetails!["user"]["team"]
                                                               ["submission"]
                                                           ["icon"] ==
                                                       62468
                                                   ? CupertinoIcons.clear
                                                   : CupertinoIcons.checkmark,
                                               color: Color(
-                                                  profileDetails["user"]["team"]
+                                                  profileDetails!["user"]["team"]
                                                           ["submission"]
                                                       ["iconColor"]),
                                               size: 22,
@@ -250,7 +250,7 @@ class _ProfileState extends State<Profile> {
                             ),
                             width: s.wHelper(90),
                             child: Text(
-                              profileDetails["user"]["bio"],
+                              profileDetails!["user"]["bio"],
                               style: t.smallText,
                             ),
                           ),
@@ -262,7 +262,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  _launchURL(profileDetails["user"]["personal"]
+                                  _launchURL(profileDetails!["user"]["personal"]
                                       ["github"]);
                                 },
                                 child: SvgPicture.asset(
@@ -276,7 +276,7 @@ class _ProfileState extends State<Profile> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  _launchURL(profileDetails["user"]["personal"]
+                                  _launchURL(profileDetails!["user"]["personal"]
                                       ["linkedin"]);
                                 },
                                 child: SvgPicture.asset(

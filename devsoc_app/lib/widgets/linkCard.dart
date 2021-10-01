@@ -7,7 +7,7 @@ class LinkCard extends StatelessWidget {
   final String title;
   final String imgPath;
   final Color bgColor;
-  LinkCard({@required this.title, @required this.imgPath, @required this.bgColor});
+  LinkCard({required this.title, required this.imgPath, required this.bgColor});
   final ThemeHelper t = ThemeHelper();
   @override
   Widget build(BuildContext context) {
