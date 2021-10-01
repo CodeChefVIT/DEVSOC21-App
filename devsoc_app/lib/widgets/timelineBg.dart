@@ -501,18 +501,18 @@ class TimelineBackground extends StatelessWidget {
             ),
           ],
         ),
-        for (int i = 0; i < tl.timelineCurrent.length; i++)
+        for (int i = 0; i < tl.timelineCurrent!.length; i++)
           EventCard(
-            duration: tl.timelineCurrent[i]["duration"].toDouble(),
-            time: tl.timelineCurrent[i]["startVal"].toDouble(),
+            duration: tl.timelineCurrent![i]["duration"].toDouble(),
+            time: tl.timelineCurrent![i]["startVal"].toDouble(),
             percent: tl.percentNodeOne[i].value,
-            title: tl.timelineCurrent[i]["title"],
-            details: tl.timelineCurrent[i]["details"] == null
+            title: tl.timelineCurrent![i]["title"],
+            details: tl.timelineCurrent![i]["details"] == null
                 ? null
-                : tl.timelineCurrent[i]["details"],
-            imgPath: tl.timelineCurrent[i]["image"] == null
+                : tl.timelineCurrent![i]["details"],
+            imgPath: tl.timelineCurrent![i]["image"] == null
                 ? null
-                : tl.timelineCurrent[i]["image"],
+                : tl.timelineCurrent![i]["image"],
           ),
       ],
     );

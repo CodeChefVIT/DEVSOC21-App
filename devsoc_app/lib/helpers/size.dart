@@ -7,8 +7,8 @@ class SizeHelper {
     width = size.width;
   }
 
-  double height;
-  double width;
+  late double height;
+  late double width;
 
   hHelper(double percent) {
     return height * percent / 100;

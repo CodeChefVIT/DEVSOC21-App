@@ -21,9 +21,9 @@ class _FormsState extends State<Forms> {
   FormGet f = FormGet();
   Map<String, dynamic> res = {};
   Map<dynamic, dynamic> resSubmit = {};
-  Map<dynamic, dynamic> form = {};
+  Map<dynamic, dynamic>? form = {};
   bool _isButtonDisabled = false;
-  Map<String, bool> checkBoxMap = {};
+  Map<String?, bool?> checkBoxMap = {};
   final _formKey = GlobalKey<FormState>();
 
   void initState() {
@@ -38,10 +38,10 @@ class _FormsState extends State<Forms> {
   }
 
   getData() async {
-    res = await f.getForm();
+    res = await (f.getForm() as Future<Map<String, dynamic>>);
     form = res["form"];
     if (res["statusCode"] != "407") {
-      for (var questions in form["questions"]) {
+      for (var questions in form!["questions"]) {
         if (questions["type"] == "checkbox") {
           for (var i in questions["checkboxOptions"]) {
             checkBoxMap[i] = false;
@@ -56,9 +56,9 @@ class _FormsState extends State<Forms> {
 
   void _submit() async {
     FocusScope.of(context).unfocus();
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       _isButtonDisabled = true;
-      for (var questions in form["questions"]) {
+      for (var questions in form!["questions"]) {
         if (questions["type"] == "checkbox") {
           for (var i in questions["checkboxOptions"]) {
             if (checkBoxMap[i] == true) {
@@ -67,7 +67,7 @@ class _FormsState extends State<Forms> {
           }
         }
       }
-      resSubmit = await f.sendForm(form);
+      resSubmit = await f.sendForm(form!);
       if (resSubmit["statusCode"] != "200") {
         _isButtonDisabled = false;
         await showErrorToast(resSubmit["message"], context);
@@ -122,13 +122,13 @@ class _FormsState extends State<Forms> {
                                   height: s.hHelper(15),
                                 ),
                                 Text(
-                                  form["title"],
+                                  form!["title"],
                                   style: t.subheading,
                                 ),
                                 SizedBox(
                                   height: s.hHelper(2),
                                 ),
-                                for (var question in form["questions"])
+                                for (var question in form!["questions"])
                                   question["type"] == "textfield"
                                       ? Container(
                                           alignment: Alignment.center,
@@ -248,7 +248,7 @@ class _FormsState extends State<Forms> {
                                                         ),
                                                       );
                                                     }).toList(),
-                                                    onChanged: (value) {
+                                                    onChanged: (dynamic value) {
                                                       setState(() {
                                                         question["value"] =
                                                             value;

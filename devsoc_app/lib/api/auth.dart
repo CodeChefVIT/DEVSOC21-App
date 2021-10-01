@@ -8,18 +8,18 @@ import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 
 class Auth extends GetxController {
-  String _email;
-  String _token;
+  String? _email;
+  String? _token;
 
-  String get email => _email;
-  String get token => _token;
+  String? get email => _email;
+  String? get token => _token;
   bool get isReg {
     return token != null;
   }
 
   ProfileGet p = ProfileGet();
 
-  Future<Map> login(Map<String, String> body) async {
+  Future<Map?> login(Map<String, String> body) async {
     var url = Uri.parse(loginRoute);
     try {
       var response = await http.post(url, body: body);
@@ -34,7 +34,7 @@ class Auth extends GetxController {
     }
   }
 
-  Future<Map> checkOTP(Map<String, String> body) async {
+  Future<Map> checkOTP(Map<String, String?> body) async {
     var url = Uri.parse(otpRoute);
     try {
       var response = await http.post(
@@ -64,16 +64,16 @@ class Auth extends GetxController {
     }
   }
 
-  Future<void> tryAutoLogin() async {
+  Future<bool> tryAutoLogin() async {
     final prefs = await SharedPreferences.getInstance();
     if (!prefs.containsKey('userData')) {
       authSuccess.value = false;
       return authSuccess.value;
     }
     final extractedUserData =
-        json.decode(prefs.getString('userData')) as Map<String, Object>;
-    _token = extractedUserData['token'];
-    _email = extractedUserData['email'];
+        json.decode(prefs.getString('userData')!) as Map<String, Object>;
+    _token = extractedUserData['token'] as String?;
+    _email = extractedUserData['email'] as String?;
     authSuccess.value = true;
     return authSuccess.value;
   }
@@ -81,14 +81,14 @@ class Auth extends GetxController {
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     final extractedUserData =
-        json.decode(prefs.getString('userData')) as Map<String, Object>;
-    var token = extractedUserData['token'];
+        json.decode(prefs.getString('userData')!) as Map<String, Object>;
+    var token = extractedUserData['token']!;
     try {
       var _ = await http.post(
         Uri.parse(logoutRoute),
         headers: {
           HttpHeaders.contentTypeHeader: "application/json",
-          HttpHeaders.authorizationHeader: token,
+          HttpHeaders.authorizationHeader: token as String,
         },
       );
       print(_.body);
